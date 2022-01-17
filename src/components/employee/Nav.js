@@ -23,12 +23,12 @@ function Nav() {
                 1
               </div>
               <div className="col-4">
-                <h3 className="text-w">
+                <h3 className="text-w font-50">
                   #พนักงาน
                 </h3>
               </div>
               <div className="col-4 text-end">
-                <h3>
+                <h3 className="font-50">
                   ออร์เดอร์
                 </h3>
               </div>
@@ -39,30 +39,30 @@ function Nav() {
         <div className="nav-b py-2">
           <div className="row">
             <div className="col-8 text-start">
-              <div className="d-inline-block text-w mx-3">
-                เนื้อสัตว์
+              <div className="d-inline-block text-w mx-3 font-25">
+                ออร์เดอร์
               </div>
-              <div className="d-inline-block text-w">
+              <div className="d-inline-block text-w font-25">
                 |
               </div>
-              <div className="d-inline-block text-w mx-3">
-                ผักสด
+              <div className="d-inline-block text-w mx-3 font-25">
+                ประวัติ
               </div>
-              <div className="d-inline-block text-w">
+              <div className="d-inline-block text-w font-25">
                 |
               </div>
-              <div className="d-inline-block text-w mx-3">
-                ของท่านเล่น
+              <div className="d-inline-block text-w mx-3 font-25">
+                รายการอาหาร
               </div>
-              <div className="d-inline-block text-w">
+              <div className="d-inline-block text-w font-25">
                 |
               </div>
-              <div className="d-inline-block text-w mx-3">
-                เครื่องดื่ม
+              <div className="d-inline-block text-w mx-3 font-25">
+                โต๊ะ
               </div>
             </div>
             <div className="col-4">
-              222
+              <input type="text" className="input-seach" placeholder="SEACH"/>
             </div>
           </div>
         </div>

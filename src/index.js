@@ -9,8 +9,10 @@ import EndMobile from './components/mobile/End'
 import NavMobile from './components/mobile/Nav'
 import SelectdrinkMobile from './components/mobile/Selectdrink'
 import SelectfastMobile from './components/mobile/Selectfast'
-import LoginEmp from './components/employee/Login'
+import OrderEmp from './components/employee/Order'
 import NavEmp from './components/employee/Nav'
+import HistoryEmp from './components/employee/History'
+import LoginEmp from './components/employee/Login'
 import './css/mobile.css';
 import './css/employee.css';
 
@@ -19,8 +21,7 @@ import './css/employee.css';
 ReactDOM.render(
   <React.StrictMode>
 
-    < NavEmp />
-    <LoginEmp />
+        <LoginEmp />
     
   </React.StrictMode>,
   document.getElementById('root')

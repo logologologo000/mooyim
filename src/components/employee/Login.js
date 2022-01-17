@@ -11,11 +11,17 @@ import { useHistory } from "react-router-dom";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
 
 function Login() {
-  
+
 
   return (
-    <div className="container text-center">
-        1234
+    <div className=" bgc-login p-1">
+        <div className="login">
+
+        </div>
+      
+
+
+
     </div>
   );
 }

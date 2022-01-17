@@ -1,3 +1,67 @@
 .nav-b {
     background-color: rgb(0, 0, 0);
 }
+.text-g {
+    color: rgb(112, 112, 112);
+}
+.detail-but {
+    background-color: rgb(0, 196, 26);
+    font-size: 20px;
+    padding: 5px;
+    width: 300px;
+    margin: auto;
+    border-radius: 20px;
+        
+}
+.print-but {
+    background-color: rgb(218, 141, 0);
+    font-size: 20px;
+    padding: 5px;
+    width:300px;
+    margin: auto;
+    border-radius: 20px;
+        
+}
+.input-seach {
+    background-color: rgb(0, 0, 0);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.527);
+}
+.line-g {
+    height: 2px !important;
+    opacity: 100 ;
+    color: rgb(182, 182, 182);
+    margin-bottom: 0;
+
+}
+.printagain-but {
+    background-color: rgb(219, 150, 0);
+    font-size: 20px;
+    padding: 5px;
+    width: 200px;
+    margin: auto;
+    border-radius: 20px;
+    margin-right: 40px;
+    border : 1px solid rgb(138, 138, 138);
+        
+}
+.font-50 {
+    font-size: 50px;
+}
+.font-25 {
+    font-size: 25px;
+}
+.margin-bot {
+    margin-bottom: 10px;
+}
+.bgc-login {
+    background-color: rgb(233, 181, 11);
+    height: 1100px;
+}
+.login {
+    width: 500px;
+    height:400px;
+    background-color: rgba(255, 255, 255, 0.514);
+    margin: auto;
+    margin-top:300px;
+}
