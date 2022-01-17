@@ -1,0 +1,73 @@
+.button-g {
+    background-color: rgb(88, 88, 88);
+    color: white;
+    padding: 10px;
+    border: 1px solid black;
+    
+}
+
+.button-gr {
+    background-color: #14d62e;
+    color: white;
+    padding: 10px;
+    border: 1px solid black;
+    
+}
+
+.wid-70 {
+    width: 70%;
+}
+
+.m-au {
+    margin: auto;
+}
+
+.img-index {
+    height: 300px;
+}
+
+
+.bgc-y {
+    background-color: rgb(241, 198, 2);
+}
+
+.bgc-g {
+    background-color: rgb(224, 224, 224);
+}
+
+.text-w {
+    color: white;
+}
+
+.nav-g {
+    background-color: rgb(117, 117, 117);
+}
+
+.f-l {
+    float: left;
+}
+
+.f-r {
+    float: right;
+}
+
+.add-but {
+    background-color: rgb(19, 255, 50);
+    border : 1px solid black;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+.down-but {
+    background-color: rgb(255, 153, 19);
+    border : 1px solid black;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+.size-i {
+    font-size: 300px;
+    color: green;
+}

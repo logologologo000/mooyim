@@ -2,11 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import IndexMobile from './components/mobile/Index'
+import SelectbeefMobile from './components/mobile/Selectbeef'
+import SelectvetMobile from './components/mobile/Selectvet'
+import EndMobile from './components/mobile/End'
+import NavMobile from './components/mobile/Nav'
+import SelectdrinkMobile from './components/mobile/Selectdrink'
+import SelectfastMobile from './components/mobile/Selectfast'
+import LoginEmp from './components/employee/Login'
+import NavEmp from './components/employee/Nav'
+import './css/mobile.css';
+import './css/employee.css';
+
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+
+    < NavEmp />
+    <LoginEmp />
+    
   </React.StrictMode>,
   document.getElementById('root')
 );

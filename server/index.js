@@ -3,7 +3,7 @@ const path = require('path');
 const cookieSession = require('cookie-session')
 const bcrypt = require('bcrypt')
 const connection = require('./database');
-const { body, validatorResult, validationResult } = require('express-validator')
+const { body, validatorResult, validationResult, Result } = require('express-validator')
 
 
 const sessions = require('express-session');
@@ -24,6 +24,13 @@ app.use(bodyParser.urlencoded({ extended: true}))
 app.use(fileUpload())
 
 var port = 8888;
+
+
+app.get('/beefmenu', (req , res) => {
+    connection.execute('SELECT * from menu_master WHERE type_id = 001').then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
 
 app.listen(port, (req, res) => {
     console.log(`Node app is Running on port ${port}...`)
