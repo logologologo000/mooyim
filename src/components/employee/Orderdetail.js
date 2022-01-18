@@ -15,7 +15,7 @@ function History() {
 
   return (
     <div>
-      <div className="bgc-g py-1 margin-bot">
+      <div className="bgc-g py-1 margin-bot mt-4">
         <div className="row">
           <div className="col-6 text-start px-5 mt-2">
             <h3 className="font-50">#003</h3>
