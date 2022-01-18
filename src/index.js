@@ -21,8 +21,12 @@ import './css/employee.css';
 ReactDOM.render(
   <React.StrictMode>
 
-        <NavEmp />
-        <OrderdetailEmp />
+
+        <LoginEmp />
+
+    <NavMobile />
+    
+
     
   </React.StrictMode>,
   document.getElementById('root')
