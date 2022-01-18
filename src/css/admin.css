@@ -1,0 +1,71 @@
+.add-icon {
+    color: rgb(7, 190, 7);
+    font-size: 50px;
+    
+}
+.fix-but {
+        background-color: rgb(224, 153, 0);
+        font-size: 20px;
+        padding: 5px;
+        width: 120px;
+        margin: auto;
+        border-radius: 20px;
+        border: 1px solid rgb(141, 140, 140);
+}
+.detail-admin-but {
+        background-color: rgb(71, 199, 20);
+        font-size: 20px;
+        padding: 5px;
+        width: 120px;
+        margin: auto;
+        border-radius: 20px;
+        border: 1px solid rgb(141, 140, 140);
+}
+.openclose-table-but {
+    background-color: rgb(20, 32, 199);
+    font-size: 20px;
+    padding: 5px;
+    width: 120px;
+    margin: auto;
+    border-radius: 20px;
+    border: 1px solid rgb(141, 140, 140);
+}
+.delettable-but {
+    background-color: rgb(207, 29, 38);
+    font-size: 20px;
+    padding: 5px;
+    width: 120px;
+    margin: auto;
+    border-radius: 20px;
+    border: 1px solid rgb(141, 140, 140);
+}
+.openclose-manu-but {
+    background-color: rgb(20, 32, 199);
+    font-size: 20px;
+    padding: 5px;
+    width: 250px;
+    margin: auto;
+    border-radius: 20px;
+    border: 1px solid rgb(141, 140, 140);
+}
+.deletemployee-but {
+    background-color: rgb(196, 0, 0);
+    font-size: 20px;
+    padding: 5px;
+    width: 300px;
+    margin: auto;
+    border-radius: 20px;
+        
+}
+.font-35 {
+    font-size: 35px;
+}
+.confirm-but {
+    background-color: rgb(20, 32, 199);
+    font-size: 20px;
+    padding: 5px;
+    width: 250px;
+    margin: auto;
+    border-radius: 20px;
+    border: 1px solid rgb(141, 140, 140);
+}

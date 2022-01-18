@@ -36,12 +36,15 @@ function Order() {
           <h3>โต๊ะ01</h3>
         </div>
         <div className="col-4 text-center text-w">
-          <div className="detail-but ">
-            ดูรายละเอียด
-          </div>
-          <div className="print-but mt-2">
-            ปริ้นออร์เดอร์
-          </div>
+          
+          <Link className="link text-w"to="/emp/order/detail">
+            <div className="detail-but" type="button">ดูรายละเอียด </div>
+          </Link>
+            
+          <Link className="link text-w"to="/emp/order/print">
+            <div className="print-but mt-2" type="button">ปริ้นออร์เดอร์ </div>
+          </Link>
+          
         </div>
       </div>
     </div>

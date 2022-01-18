@@ -55,8 +55,10 @@ function History() {
           </div>
           <hr className="line-g" />
         </div>
-        <div className="printagain-but text-center text-w my-3" type="button">
-          ปริ้นอีกครั้ง
+        <div>
+        <Link className="link text-w"to="/emp/order/print">
+            <div className="printagain-but text-center text-w my-3" type="button">ปริ้นอีกครั้ง </div>
+          </Link>
         </div>
         
       </div>

@@ -14,8 +14,19 @@ import NavEmp from './components/employee/Nav'
 import HistoryEmp from './components/employee/History'
 import OrderdetailEmp from './components/employee/Orderdetail'
 import LoginEmp from './components/employee/Login'
+import PrintEmp from './components/employee/Print'
+import ManuEmp from './components/employee/Manu'
+import TableEmp from './components/employee/Table'
+import TabledetailEmp from './components/employee/Tabledetail'
+import NavAdmin from './components/admin/Nav'
+import TableAdmin from './components/admin/Table'
+import ManuAdmin from './components/admin/Manu'
+import EmployeeAdmin from './components/admin/Employee'
+import AddmanuAdmin from './components/admin/Addmanu'
+import AddemployeeAdmin from './components/admin/Addemployee'
 import './css/mobile.css';
 import './css/employee.css';
+import './css/admin.css';
 
 import {
   BrowserRouter,
@@ -30,13 +41,22 @@ export default function Apps() {
   return (
     <BrowserRouter>
       <Routes>
-
-
-        <Route path="/mobile" element={<IndexMobile />} />
-        <Route path="/mobile/beef" element={<div><NavMobile /><SelectbeefMobile /></div>} />
-        <Route path="/mobile/vet" element={<div><NavMobile /><SelectvetMobile /></div>} />
-        <Route path="/mobile/drink" element={<div><NavMobile /><SelectdrinkMobile /></div>} />
-        <Route path="/mobile/fast" element={<div><NavMobile /><SelectfastMobile /></div>} />
+        
+        <Route path="/" element={<LoginEmp />} />
+        <Route path="/emp/order" element={<div><NavEmp /><OrderEmp /></div>} />
+        <Route path="/emp/history" element={<div><NavEmp /><HistoryEmp /></div>} />
+        <Route path="/emp/order/detail" element={<div><NavEmp /><OrderdetailEmp /></div>} />
+        <Route path="/emp/order/print" element={<div><NavEmp /><PrintEmp /></div>} />
+        <Route path="/emp/manu" element={<div><NavEmp /><ManuEmp /></div>} />
+        <Route path="/emp/table" element={<div><NavEmp /><TableEmp /></div>} />
+        <Route path="/emp/table/detail" element={<div><NavEmp /><TabledetailEmp /></div>} />
+        <Route path="/admin/table" element={<div><NavAdmin /><TableAdmin /></div>} />
+        <Route path="/admin/manu" element={<div><NavAdmin /><ManuAdmin /></div>} />
+        <Route path="/admin/employee" element={<div><NavAdmin /><EmployeeAdmin /></div>} />
+        <Route path="/admin/manu/addmanu" element={<div><NavAdmin /><AddmanuAdmin /></div>} />
+        <Route path="/admin/employee/addemployee" element={<div><NavAdmin /><AddemployeeAdmin /></div>} />
+        
+        
 
         
 

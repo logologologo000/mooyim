@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 // import { GoEye } from "react-icons/go";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
 
-function History() {
+function Orderdetail() {
 
 
   return (
@@ -55,8 +55,10 @@ function History() {
           </div>
           <hr className="line-g" />
         </div>
-        <div className="printagain-but text-center text-w my-3" type="button">
-          ปริ้นอีกครั้ง
+        <div >
+        <Link className="link "to="/emp/order/print">
+            <div className="printagain-but text-center text-w my-3" type="button">ปริ้นอีกครั้ง </div>
+          </Link>
         </div>
         
       </div>
@@ -69,4 +71,4 @@ function History() {
   );
 }
 
-export default History;
+export default Orderdetail;
