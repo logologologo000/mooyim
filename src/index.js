@@ -21,12 +21,12 @@ import './css/employee.css';
 ReactDOM.render(
   <React.StrictMode>
 
-<<<<<<< Updated upstream
+
         <LoginEmp />
-=======
+
     <NavMobile />
     
->>>>>>> Stashed changes
+
     
   </React.StrictMode>,
   document.getElementById('root')
