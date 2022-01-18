@@ -12,15 +12,15 @@ import { useHistory } from "react-router-dom";
 
 function Selectvet() {
 
-  const [beefMenu, SetBeefmenu] = useState([])
+  const [vetMenu, SetVetmenu] = useState([])
 
   useEffect(() => {
-    Axios.get('http://localhost:8888/beefmenu').then((result) => {
-      SetBeefmenu(result.data)
+    Axios.get('http://localhost:8888/vetmenu').then((result) => {
+      SetVetmenu(result.data)
     })
   }, [])
 
-  console.log(beefMenu)
+  
   return (
 
     <div className="container">
@@ -36,7 +36,7 @@ function Selectvet() {
           }
 
           {
-            beefMenu.map((result, key) => {
+            vetMenu.map((result, key) => {
               return (
                 <div key={key}>
                   <div className="row bgc-g mt-3">

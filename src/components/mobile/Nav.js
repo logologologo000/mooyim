@@ -21,37 +21,41 @@ function Nav() {
 
 
   return (
-    
+
     <div className=" text-center">
-      <nav>
+      <nav className="fixed-top">
         <div className="bgc-y py-2">
           <h1 className="text-w">โต๊ะของคุณหมายเลข 1</h1>
         </div>
         <div className="nav-g py-2">
-          <div className="d-inline-block text-w mx-3">
-            เนื้อสัตว์
+          <div onClick={() => {
+            document.getElementById("beef").scrollIntoView()
+          }} className="d-inline-block text-w mx-3">
+            <Link to="#">เนื้อสัตว์</Link>
           </div>
-          <div className="d-inline-block text-w mx-3">
-            ผักสด
+          <div onClick={() => {
+            document.getElementById("vet").scrollIntoView()
+          }} className="d-inline-block text-w mx-3">
+            <Link to="#">ผักสด</Link>
           </div>
-          <div className="d-inline-block text-w mx-3">
-            ของท่านเล่น
+          <div onClick={() => {
+            document.getElementById("fast").scrollIntoView()
+          }} className="d-inline-block text-w mx-3">
+            <Link to="#">ของท่านเล่น</Link>
           </div>
-          <div className="d-inline-block text-w mx-3">
-            เครื่องดื่ม
+          <div 
+          onClick={() => {
+            document.getElementById("drink").scrollIntoView()
+          }} className="d-inline-block text-w mx-3">
+            <Link to="#">เครื่องดื่ม</Link>
+            
           </div>
         </div>
-        
+
       </nav>
 
+
       
-      <BrowserRouter>
-      <Routes>
-        
-          <Route index element={<SelectbeefMobile />} />
-          <Route path="/vet" element={<EndMobile />} />
-      </Routes>
-    </BrowserRouter>
 
 
 

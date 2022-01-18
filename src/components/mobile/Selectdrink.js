@@ -12,15 +12,15 @@ import { useHistory } from "react-router-dom";
 
 function Selectdrink() {
 
-  const [beefMenu, SetBeefmenu] = useState([])
+  const [drinkMenu, SetDrinkmenu] = useState([])
 
   useEffect(() => {
-    Axios.get('http://localhost:8888/beefmenu').then((result) => {
-      SetBeefmenu(result.data)
+    Axios.get('http://localhost:8888/drinkmenu').then((result) => {
+      SetDrinkmenu(result.data)
     })
   }, [])
 
-  console.log(beefMenu)
+  
   return (
 
     <div className="container">
@@ -36,7 +36,7 @@ function Selectdrink() {
           }
 
           {
-            beefMenu.map((result, key) => {
+            drinkMenu.map((result, key) => {
               return (
                 <div key={key}>
                   <div className="row bgc-g mt-3">

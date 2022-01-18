@@ -11,22 +11,25 @@ import { useHistory } from "react-router-dom";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
 
 function Index() {
-  
+
 
   return (
     <div className="container text-center">
-        <div>
-            <img src="#"/>
-        </div>
-        <div className="mt-3">
-            <h2>โต๊ะของคุณหมายเลข </h2>
-        </div>
+      <div>
+        <img src="#" />
+      </div>
+      <div className="mt-3">
+        <h2>โต๊ะของคุณหมายเลข </h2>
+      </div>
 
-        <div className="wid-70 m-au">
-            <div className="button-g mt-3">สั่งอาหารและเครื่งดื่ม</div>
-            <div className="button-g mt-3">ประวัติ</div>
-        </div>
-        
+      <div className="wid-70 m-au">
+        <Link to="beef">
+          <div className="button-g mt-3">สั่งอาหารและเครื่งดื่ม</div>
+        </Link>
+
+        <div className="button-g mt-3">ประวัติ</div>
+      </div>
+
     </div>
   );
 }

@@ -12,15 +12,15 @@ import { useHistory } from "react-router-dom";
 
 function Selectfast() {
 
-  const [beefMenu, SetBeefmenu] = useState([])
+  const [fastMenu, SetFastmenu] = useState([])
 
   useEffect(() => {
-    Axios.get('http://localhost:8888/beefmenu').then((result) => {
-      SetBeefmenu(result.data)
+    Axios.get('http://localhost:8888/fastmenu').then((result) => {
+      SetFastmenu(result.data)
     })
   }, [])
 
-  console.log(beefMenu)
+  
   return (
 
     <div className="container">
@@ -36,7 +36,7 @@ function Selectfast() {
           }
 
           {
-            beefMenu.map((result, key) => {
+            fastMenu.map((result, key) => {
               return (
                 <div key={key}>
                   <div className="row bgc-g mt-3">
