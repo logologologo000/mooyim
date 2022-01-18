@@ -13,6 +13,7 @@ import OrderEmp from './components/employee/Order'
 import NavEmp from './components/employee/Nav'
 import HistoryEmp from './components/employee/History'
 import OrderdetailEmp from './components/employee/Orderdetail'
+import LoginEmp from './components/employee/Login'
 import './css/mobile.css';
 import './css/employee.css';
 
