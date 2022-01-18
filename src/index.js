@@ -55,6 +55,12 @@ export default function Apps() {
         <Route path="/admin/employee" element={<div><NavAdmin /><EmployeeAdmin /></div>} />
         <Route path="/admin/manu/addmanu" element={<div><NavAdmin /><AddmanuAdmin /></div>} />
         <Route path="/admin/employee/addemployee" element={<div><NavAdmin /><AddemployeeAdmin /></div>} />
+
+        <Route path="/mobile" element={<IndexMobile />} />
+        <Route path="/mobile/beef" element={<div><NavMobile /><SelectbeefMobile /></div>} />
+        <Route path="/mobile/vet" element={<div><NavMobile /><SelectvetMobile /></div>} />
+        <Route path="/mobile/drink" element={<div><NavMobile /><SelectdrinkMobile /></div>} />
+        <Route path="/mobile/fast" element={<div><NavMobile /><SelectfastMobile /></div>} />
         
         
 
