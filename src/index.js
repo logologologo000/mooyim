@@ -12,7 +12,7 @@ import SelectfastMobile from './components/mobile/Selectfast'
 import OrderEmp from './components/employee/Order'
 import NavEmp from './components/employee/Nav'
 import HistoryEmp from './components/employee/History'
-import LoginEmp from './components/employee/Login'
+import OrderdetailEmp from './components/employee/Orderdetail'
 import './css/mobile.css';
 import './css/employee.css';
 
@@ -21,7 +21,8 @@ import './css/employee.css';
 ReactDOM.render(
   <React.StrictMode>
 
-        <LoginEmp />
+        <NavEmp />
+        <OrderdetailEmp />
     
   </React.StrictMode>,
   document.getElementById('root')

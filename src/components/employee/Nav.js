@@ -40,7 +40,7 @@ function Nav() {
           <div className="row">
             <div className="col-8 text-start">
               <div className="d-inline-block text-w mx-3 font-25">
-                ออร์เดอร์
+                <a>ออร์เดอร์</a>
               </div>
               <div className="d-inline-block text-w font-25">
                 |

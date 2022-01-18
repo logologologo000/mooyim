@@ -15,10 +15,17 @@ function Login() {
 
   return (
     <div className=" bgc-login p-1">
-        <div className="login">
-
+      <div className="login text-center p-5">
+        <h1> MOOYIMJIMJUM</h1>
+        <input className="input-username my-3" placeholder=":username" />
+        <input className="input-password" placeholder=":password" />
+        <div className="login-but text-w" type="button">
+          เข้าสู่ระบบ
         </div>
-      
+      </div>
+
+
+
 
 
 
