@@ -51,6 +51,30 @@ app.get('/fastmenu', (req , res) => {
     })
 })
 
+//////////////////////////////////////////////////// Order //////////////////////////////////////////////////////////////////
+
+app.post('/insorder', (req , res) => {
+    const table_id = req.body.table_id
+    const user_code = req.body.user_code
+    console.log(table_id)
+    console.log(user_code)
+    connection.execute('Insert INTO order_head (Table_id , User_code) VALUES (?,?)', [table_id , user_code])
+})
+
+
+//////////////////////////////////////////////////// Menu //////////////////////////////////////////////////////////////////
+
+app.post('/setmenu', (req , res) => {
+    const Detail_amount = req.body.Detail_amount
+    const Menu_code = req.body.Menu_code
+    const Detail_price = req.body.Detail_price
+    const Head_code = req.body.Head_code
+
+    connection.execute('Insert INTO order_detail (Detail_amount, Menu_code , Detail_price , Head_code) VALUES (?,?,?,?)', 
+    [Detail_amount , Menu_code , Detail_price , Head_code ]).then(([result]) => {
+        res.status(200).send("success").end()
+    })
+})
 
 app.listen(port, (req, res) => {
     console.log(`Node app is Running on port ${port}...`)
