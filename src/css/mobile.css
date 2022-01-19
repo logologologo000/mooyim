@@ -72,3 +72,18 @@
     color: green;
 }
 
+.mart {
+margin-top: 100px;
+}
+
+.bgc-p {
+    background-color: rgb(255, 152, 152);
+}
+
+.hr21 {
+    color: black !important;
+    height: 2px !important;
+    opacity: 100%;
+    
+}
+

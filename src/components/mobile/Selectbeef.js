@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link, Route, Switch } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import logo from "../../Logo001.png";
 // import { AiFillAlert } from "react-icons/ai";
 // import { HiUsers } from "react-icons/hi";
 // import { FaUserGraduate } from "react-icons/fa";
@@ -36,24 +37,41 @@ function Selectbeef() {
     Axios.get('http://localhost:8888/vetmenu').then((result) => {
       SetVetmenu(result.data)
     })
-
+    console.log(logo)
   }, [])
 
+  
 
   return (
 
     <div className="container">
-      <div className="row mt-3">
-        <div   className="text-start d-inline-block col-6">เนื้อสัตว์</div>
-        <div className="text-end d-inline-block col-6">จำนวน</div>
-        <br />
-        <hr className="" />
+
+      <nav className="fixed-bottom">
+        <div className="bgc-g py-2">
+          <div className="my-3">
+            <div className="button-g text-center mt-2 d-inline-block mx-3">
+              ประวัติการสั่งอาหาร
+            </div>
+            <div className="button-gr text-center mt-2 d-inline-block mx-3" >
+            <Link className="link text-w" to="/mobile/end">ส่งรายการอาหาร</Link>
+              
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="row mart" >
 
         <div className="m-au col-12 container">
           {
             //loop here
           }
-          <div className="mt-5" id="beef">เนื้อสัตว์</div>
+          <div className="bgc-p text-center">
+            <h4 className="" id="beef">********** หมายเหตุ **********</h4>
+            <h5 className="" id="">- ไม่สามารถยกเลิกรายการสั่งได้</h5>
+          </div>
+          <h1 className="mt-5" id="">เนื้อสัตว์</h1>
+          <hr className="my-0 hr21"  />
           {
             beefMenu.map((result, key) => {
               return (
@@ -87,7 +105,11 @@ function Selectbeef() {
               )
             })
           }
-          <div  className="mt-5" id="vet">ผักสด</div>
+          <h1 className="" id="vet"><br /></h1>
+          <h1 className="" id=""><br /></h1>
+          <h1 className="mt-5" id="">ผักสด</h1>
+          <hr className="my-0 hr21"  />
+
           {
             vetMenu.map((result, key) => {
               return (
@@ -121,7 +143,11 @@ function Selectbeef() {
               )
             })
           }
-          <div className="mt-5" id="fast">ของทานเล่น</div>
+          <h1 className="" id="fast"><br /></h1>
+          <h1 className="" id=""><br /></h1>
+          <h1 className="mt-5" id="fast">ของทานเล่น</h1>
+          <hr className="my-0 hr21"  />
+
           {
             fastMenu.map((result, key) => {
               return (
@@ -155,7 +181,11 @@ function Selectbeef() {
               )
             })
           }
-          <div className="mt-5" id="drink">เครื่องดื่ม</div>
+          <h1 className="" id="drink"><br /></h1>
+          <h1 className="" id=""><br /></h1>
+          <h1 className="mt-5" id="">เครื่องดื่ม</h1>
+          <hr className="my-0 hr21"  />
+
           {
             drinkMenu.map((result, key) => {
               return (
@@ -190,14 +220,7 @@ function Selectbeef() {
             })
           }
 
-          <div className="my-3">
-            <div  className="button-g text-center mt-2 d-inline-block mx-3">
-              เลือกอาหาร
-            </div>
-            <div className="button-gr text-center mt-2 d-inline-block mx-3" >
-              ส่งรายการอาหาร
-            </div>
-          </div>
+
 
         </div>
 

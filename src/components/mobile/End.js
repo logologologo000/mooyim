@@ -23,8 +23,14 @@ function End() {
             สั่งรายการอาหารและเครื่องดื่มเรียบร้อย !!
         </div>
         <div className=" m-au mt-5">
-            <div className="button-g mt-3 d-inline-block mx-3">สั่งอาหารและเครื่งดื่ม</div>
+        <Link to="#">
             <div className="button-g mt-3 d-inline-block mx-3">ประวัติการสั่ง</div>
+
+        </Link>
+        <Link to="/mobile/beef">
+            <div className="button-g mt-3 d-inline-block mx-3">สั่งอาหารและเครื่งดื่ม</div>
+
+        </Link>
         </div>
         
     </div>

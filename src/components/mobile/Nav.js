@@ -31,29 +31,29 @@ function Nav() {
           <div onClick={() => {
             document.getElementById("beef").scrollIntoView()
           }} className="d-inline-block text-w mx-3">
-            <Link to="#">เนื้อสัตว์</Link>
+            <Link className="link text-w" to="#">เนื้อสัตว์</Link>
           </div>
           <div onClick={() => {
             document.getElementById("vet").scrollIntoView()
           }} className="d-inline-block text-w mx-3">
-            <Link to="#">ผักสด</Link>
+            <Link className="link text-w" to="#">ผักสด</Link>
           </div>
           <div onClick={() => {
             document.getElementById("fast").scrollIntoView()
           }} className="d-inline-block text-w mx-3">
-            <Link to="#">ของท่านเล่น</Link>
+            <Link className="link text-w" to="#">ของท่านเล่น</Link>
           </div>
           <div 
           onClick={() => {
             document.getElementById("drink").scrollIntoView()
           }} className="d-inline-block text-w mx-3">
-            <Link to="#">เครื่องดื่ม</Link>
+            <Link className="link text-w" to="#">เครื่องดื่ม</Link>
             
           </div>
         </div>
-
+          
       </nav>
-
+      
 
       
 
