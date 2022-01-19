@@ -78,11 +78,13 @@ export default function Apps() {
         <Route path="/admin/table/tabledetail" element={<div><NavAdmin /><TabledetailAdmin /></div>} />
 
 
-        <Route path="/mobile" element={<IndexMobile />} />
-        <Route path="/mobile/beef" element={<div><NavMobile /><SelectbeefMobile /></div>} />
+        <Route path="/mobile/:tid" element={<IndexMobile />} />
+        <Route path="/mobile/:tid/beef" element={<div><NavMobile /><SelectbeefMobile /></div>} />
         <Route path="/mobile/vet" element={<div><NavMobile /><SelectvetMobile /></div>} />
         <Route path="/mobile/drink" element={<div><NavMobile /><SelectdrinkMobile /></div>} />
         <Route path="/mobile/fast" element={<div><NavMobile /><SelectfastMobile /></div>} />
+        <Route path="/mobile/end" element={<div><EndMobile /></div>} />
+        <Route path="/mobile/:tid/history" element={<div><HisMobile /></div>} />
         
         
 
