@@ -57,16 +57,16 @@ function Manu() {
                 <div className="col-3 text-center text-w pt-5">
 
                     <Link className="link text-w" to="#">
-                        <div className="openclose-manu-but" type="button">เปิด/ปิด </div>
+                        <div className="openclose-manu-but d-inline-block" type="button">เปิด/ปิด </div>
                     </Link>
 
-                    <Link className="link text-w" to="#">
-                        <div className="fix-but d-inline-block mx-2 my-2" type="button">แก้ไข </div>
+                    <Link className="link text-w" to="/admin/manu/manufix">
+                        <div className="fix-manu-but d-inline-block  my-2" type="button">
+                            แก้ไข 
+                            </div>
                     </Link>
 
-                    <Link className="link text-w" to="#">
-                        <div className="delettable-but d-inline-block" type="button">ลบออก </div>
-                    </Link>
+                
 
                 </div>
                 <div className="col-1">

@@ -10,12 +10,12 @@ import { useHistory } from "react-router-dom";
 // import { GoEye } from "react-icons/go";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
 
-function Tabledetail() {
+function History() {
 
 
     return (
         <div>
-            <div className="bgc-g py-1 margin-bot ">
+            <div className="bgc-g py-1 margin-bot">
                 <div className="row">
                     <div className="col-6 text-start px-5 mt-2">
                         <h3 className="font-50">#003</h3>
@@ -55,22 +55,14 @@ function Tabledetail() {
                     </div>
                     <hr className="line-g" />
                 </div>
-                <div >
-                    <Link className="link " to="/emp/order/print">
+                <div>
+                    <Link className="link text-w" to="/admin/order/print">
                         <div className="printagain-but text-center text-w my-3" type="button">
                             ปริ้นอีกครั้ง
                         </div>
                     </Link>
                 </div>
 
-            </div>
-            <div>
-                <Link className="link" to="#">
-                    <div className="pay-but text-center text-w mt-500 d-inline-block ml-650">
-                        ชำระเงิน
-                    </div>
-                </Link>
-                
             </div>
 
 
@@ -81,4 +73,4 @@ function Tabledetail() {
     );
 }
 
-export default Tabledetail;
+export default History;

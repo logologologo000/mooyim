@@ -56,7 +56,7 @@ function Tabledetail() {
                     <hr className="line-g" />
                 </div>
                 <div >
-                    <Link className="link " to="/emp/order/print">
+                    <Link className="link " to="/admin/order/print">
                         <div className="printagain-but text-center text-w my-3" type="button">
                             ปริ้นอีกครั้ง
                         </div>

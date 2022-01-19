@@ -50,7 +50,7 @@ function Employee() {
                 </div>
                 <div className="col-3 text-center text-w">
 
-                    <Link className="link text-w" to="#">
+                    <Link className="link text-w" to="/admin/employee/employeedetail">
                         <div className="detail-but" type="button">ดูรายละเอียด </div>
                     </Link>
 

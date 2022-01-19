@@ -18,15 +18,12 @@ function Table() {
             <div className="nav-g py-2">
                 <div className="row font-25">
                     <div className="col-3 text-center text-w">
-                        รูปภาพ
-                    </div>
-                    <div className="col-2 text-center text-w">
                         รหัสโต๊ะ
                     </div>
-                    <div className="col-2 text-center text-w">
+                    <div className="col-3 text-center text-w">
                         เลขโต๊ะ
                     </div>
-                    <div className="col-2 text-center text-w">
+                    <div className="col-3 text-center text-w">
                         สถานะ
                     </div>
                     <div className="col-3 text-center text-w">
@@ -34,30 +31,25 @@ function Table() {
                     </div>
                 </div>
             </div>
-            <div className="row bgc-g zzzborder" style={{ height: 200 }}>
-                <div className="col-3 text-center mt-4">
-                    <div className="photo-size">
-
-                    </div>
-                </div>
-                <div className="col-2 text-center py-5 mt-4">
+            <div className="row bgc-g zzzborder" style={{ height: 130 }}>
+                <div className="col-3 text-center py-5 mt-2">
                     <h3>001</h3>
                 </div>
-                <div className="col-2 text-center py-5 mt-4">
+                <div className="col-3 text-center py-5 mt-2">
                     <h3>โต๊ะ01</h3>
                 </div>
-                <div className="col-2 text-center py-5 mt-32">
+                <div className="col-3 text-center py-5 mt-3">
                     <h5>สถานะ:เปิด</h5>
                 </div>
-                <div className="col-3 text-center py-5 text-w">
+                <div className="col-3 text-center py-4 text-w">
 
                     <Link className="link text-w" to="#">
-                        <div className="opentable-but d-inline-block mx-2 " type="button">เปิด </div>
+                        <div className="openclose-but d-inline-block mx-2 " type="button">
+                            เปิด/ปิด
+                            </div>
                     </Link>
 
-                    <Link className="link text-w" to="#">
-                        <div className="closetable-but d-inline-block" type="button">ปิด </div>
-                    </Link>
+                    
 
                     <Link className="link text-w d-inline-block" to="/emp/table/detail">
                         <div className="detailtable-but mt-2" type="button">รายละเอียด </div>

@@ -12,28 +12,18 @@ import { useHistory } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
 
 
-function Addmanu() {
+function Employeefix() {
 
 
     return (
         <div>
             <div className=" bgc-g py-3">
                 <div className="font-50 text-center">
-                    เพิ่มรายการอาหาร
+                    แก้ไขรายละเอียดพนักงาน
                 </div>
                 <div className="row mt-5">
                     <div className="col-2 font-35 d-inline-block mx-5 text-end">
-                        รูปประกอบ:
-                    </div>
-                    <div className="col-3 d-inline-block font-25 mt-2">
-                        <input type="file" />
-                    </div>
-                    <div className="col-7">
-                    </div>
-                </div>
-                <div className="row mt-5">
-                    <div className="col-2 font-35 d-inline-block mx-5 text-end">
-                        รหัสหมวดหมู่:
+                        รหัสพนักงาน:
                     </div>
                     <div className="col-3 d-inline-block font-25 mt-2">
                         <input type="text" />
@@ -43,7 +33,7 @@ function Addmanu() {
                 </div>
                 <div className="row mt-5">
                     <div className="col-2 font-35 d-inline-block mx-5 text-end">
-                        รหัสเมนู:
+                        สถานะ:
                     </div>
                     <div className="col-3 d-inline-block font-25 mt-2">
                         <input type="text" />
@@ -53,7 +43,7 @@ function Addmanu() {
                 </div>
                 <div className="row mt-5">
                     <div className="col-2 font-35 d-inline-block mx-5 text-end">
-                        ชื่อเมนู:
+                        ชื่อ - สกุล:
                     </div>
                     <div className="col-3 d-inline-block font-25 mt-2">
                         <input type="text" />
@@ -63,7 +53,7 @@ function Addmanu() {
                 </div>
                 <div className="row mt-5">
                     <div className="col-2 font-35 d-inline-block mx-5 text-end">
-                        ราคา:
+                        ที่อยู่:
                     </div>
                     <div className="col-3 d-inline-block font-25 mt-2">
                         <input type="text" />
@@ -71,10 +61,31 @@ function Addmanu() {
                     <div className="col-7">
                     </div>
                 </div>
-                <div>
-                <Link className="link text-w" to="#">
-                        <div className="confirm-but text-center my-5" type="button">ยืนยัน </div>
+                <div className="row mt-5">
+                    <div className="col-2 font-35 d-inline-block mx-5 text-end">
+                        เบอร์ติดต่อ:
+                    </div>
+                    <div className="col-3 d-inline-block font-25 mt-2">
+                        <input type="text" />
+                    </div>
+                    <div className="col-7">
+                    </div>
+                </div>
+
+                <div className="sdsd">
+
+
+                    <Link className="link text-w" to="#">
+                        <div className="confirm-but text-center my-5 d-inline-block" type="button">
+                            ยืนยัน
+                        </div>
                     </Link>
+                    <Link className="link text-w" to="#">
+                        <div className="deletfixtable-but text-center my-5 d-inline-block mx-3" type="button">
+                            ลบออก
+                        </div>
+                    </Link>
+
                 </div>
             </div>
 
@@ -87,4 +98,4 @@ function Addmanu() {
     );
 }
 
-export default Addmanu;
+export default Employeefix;

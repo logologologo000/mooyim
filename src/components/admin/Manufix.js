@@ -12,15 +12,16 @@ import { useHistory } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
 
 
-function Addmanu() {
+function Manufix() {
 
 
     return (
         <div>
             <div className=" bgc-g py-3">
                 <div className="font-50 text-center">
-                    เพิ่มรายการอาหาร
+                    แก้ไขรายการอาหาร
                 </div>
+                
                 <div className="row mt-5">
                     <div className="col-2 font-35 d-inline-block mx-5 text-end">
                         รูปประกอบ:
@@ -50,8 +51,7 @@ function Addmanu() {
                     </div>
                     <div className="col-7">
                     </div>
-                </div>
-                <div className="row mt-5">
+                </div><div className="row mt-5">
                     <div className="col-2 font-35 d-inline-block mx-5 text-end">
                         ชื่อเมนู:
                     </div>
@@ -71,10 +71,21 @@ function Addmanu() {
                     <div className="col-7">
                     </div>
                 </div>
-                <div>
-                <Link className="link text-w" to="#">
-                        <div className="confirm-but text-center my-5" type="button">ยืนยัน </div>
+
+                <div className="sdsd">
+
+
+                    <Link className="link text-w" to="#">
+                        <div className="confirm-but text-center my-5 d-inline-block" type="button">
+                            ยืนยัน
+                        </div>
                     </Link>
+                    <Link className="link text-w" to="#">
+                        <div className="deletfixtable-but text-center my-5 d-inline-block mx-3" type="button">
+                            ลบออก
+                        </div>
+                    </Link>
+
                 </div>
             </div>
 
@@ -87,4 +98,4 @@ function Addmanu() {
     );
 }
 
-export default Addmanu;
+export default Manufix;

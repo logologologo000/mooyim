@@ -40,36 +40,49 @@ function Nav() {
           <div className="row">
             <div className="col-8 text-start">
               <div className="d-inline-block text-w mx-3 font-25">
-                <Link className="link link:hover text-w" to="#">ออร์เดอร์</Link>
+                <Link className="link link:hover text-w" to="/admin/order">
+                  ออร์เดอร์
+                  </Link>
 
               </div>
               <div className="d-inline-block text-w font-25">
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-                <Link className="link link:hover text-w" to="#">ประวัติ</Link>
+                <Link className="link link:hover text-w" to="/admin/history">
+                  ประวัติ
+                  </Link>
               </div>
               <div className="d-inline-block text-w font-25">
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-              <Link className="link link:hover text-w" to="/admin/manu">รายการอาหาร</Link>
+              <Link className="link link:hover text-w" to="/admin/manu">
+                รายการอาหาร
+                </Link>
               </div>
               <div className="d-inline-block text-w font-25">
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-              <Link className="link link:hover text-w" to="/admin/table">โต๊ะ</Link>
+              <Link className="link link:hover text-w" to="/admin/table">
+                โต๊ะ
+                </Link>
               </div>
               <div className="d-inline-block text-w font-25">
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-              <Link className="link link:hover text-w" to="/admin/employee">พนักงาน</Link>
+              <Link className="link link:hover text-w" to="/admin/employee">
+                พนักงาน
+                </Link>
               </div>
             </div>
-            <div className="col-4">
-              <input type="text" className="input-seach" placeholder="SEACH" />
+            <div className="col-4 font-25 text-w " >
+              <div className="d-inline-block " type="button">
+            
+            logout
+              </div>
             </div>
           </div>
         </div>

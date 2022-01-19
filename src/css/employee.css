@@ -101,7 +101,7 @@
 .mt-32 {
     margin-top: 32px;
 }
-.open-but {
+.openclose-but {
     background-color: rgb(20, 32, 199);
     font-size: 20px;
     padding: 5px;
@@ -109,33 +109,11 @@
     margin: auto;
     border-radius: 20px;
 }
-.close-but {
-    background-color: rgb(207, 29, 38);
-    font-size: 20px;
-    padding: 5px;
-    width: 250px;
-    margin: auto;
-    border-radius: 20px;
-}
+
 .zzzborder {
     border:1px solid rgb(107, 106, 106);
 }
-.opentable-but {
-    background-color: rgb(20, 32, 199);
-    font-size: 20px;
-    padding: 5px;
-    width: 120px;
-    margin: auto;
-    border-radius: 20px;
-}
-.closetable-but {
-    background-color: rgb(207, 29, 38);
-    font-size: 20px;
-    padding: 5px;
-    width: 120px;
-    margin: auto;
-    border-radius: 20px;
-}
+
 .detailtable-but {
     background-color: rgb(29, 207, 38);
     font-size: 20px;
@@ -150,4 +128,21 @@
     height: 150px;
     margin: auto;
 }
+.pay-but {
+    background-color: rgb(24, 189, 9);
+    font-size: 20px;
+    padding: 5px;
+    width: 250px;
+    margin: auto;
+    border-radius: 12px;
+    border : 1px solid rgb(138, 138, 138);
+        
+}
+.mt-500 {
+    margin-top: 500px;
+}
+.ml-650 {
+    margin-left: 650px;
+}
+
 

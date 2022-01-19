@@ -51,13 +51,10 @@ function Manu() {
                 <div className="col-3 text-center text-w pt-5">
 
                     <Link className="link text-w" to="#">
-                        <div className="open-but" type="button">เปิด </div>
+                        <div className="openclose-but mt-4" type="button">
+                            เปิด/ปิด 
+                        </div>
                     </Link>
-
-                    <Link className="link text-w" to="#">
-                        <div className="close-but mt-2" type="button">ปิด </div>
-                    </Link>
-
                 </div>
 
             </div>

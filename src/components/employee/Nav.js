@@ -53,17 +53,24 @@ function Nav() {
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-              <Link className="link link:hover text-w" to="/emp/manu">รายการอาหาร</Link>
+              <Link className="link link:hover text-w" to="/emp/manu">
+                รายการอาหาร
+                </Link>
               </div>
               <div className="d-inline-block text-w font-25">
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-              <Link className="link link:hover text-w" to="/emp/table">โต๊ะ</Link>
+              <Link className="link link:hover text-w" to="/emp/table">
+                โต๊ะ
+                </Link>
               </div>
             </div>
-            <div className="col-4">
-              <input type="text" className="input-seach" placeholder="SEACH" />
+            <div className="col-4 font-25 text-w " >
+              <div className="d-inline-block " type="button">
+            
+            logout
+              </div>
             </div>
           </div>
         </div>
