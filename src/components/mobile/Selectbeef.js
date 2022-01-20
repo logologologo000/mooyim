@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link, Route, Switch } from "react-router-dom";
@@ -10,20 +10,30 @@ import logo from "../../Logo001.png";
 // import { MdAssignment } from "react-icons/md";
 // import { GoEye } from "react-icons/go";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
+import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
+
 
 function Selectbeef() {
+
+  const { tid } = useParams();
+  var navigate = useNavigate();
 
   const [beefMenu, SetBeefmenu] = useState([])
   const [drinkMenu, SetDrinkmenu] = useState([])
   const [vetMenu, SetVetmenu] = useState([])
   const [fastMenu, SetFastmenu] = useState([])
+  const [allMenu, SetAllmenu] = useState([])
 
   const [frow, SetFrow] = useState([])
   const [srow, SetSrow] = useState([])
   const [ic, SetIc] = useState(0)
 
+
+
   useEffect(() => {
-    
+
     Axios.get('http://localhost:8888/beefmenu').then((result) => {
       SetBeefmenu(result.data)
 
@@ -40,14 +50,79 @@ function Selectbeef() {
     Axios.get('http://localhost:8888/vetmenu').then((result) => {
       SetVetmenu(result.data)
     })
-    console.log(logo)
+
+    Axios.get('http://localhost:8888/allmenu').then((result) => {
+      SetAllmenu(result.data)
+    })
+
+
+
   }, [])
+
+  const [amount, SetAmount] = useState(0)
+  const [menucode, SetMenucode] = useState(0)
+  const [price, Setprice] = useState(0)
+  const [headcode, SetHeadcode] = useState(0)
 
   const SendOrder = () => {
 
+    var headcodevar = 0
+    //รับ เลขโต๊ะมาจาก params 
+    //ส่งไปเพื่อ รับ row ของ order
+    Axios.get(`http://localhost:8888/insorder/${tid}`, {
 
+    }).then((result) => {
+      console.log("row คือ")
+      var s = result.data[0]
+
+      console.log(parseInt(Object.values(s)))
+      headcodevar = parseInt(Object.values(s))
+
+
+      var price = 0
+      allMenu.map((result, key) => {
+
+
+
+        if (document.getElementById(`${result.Menu_code}`) != null) {
+
+
+
+          var x = document.getElementById(`${result.Menu_code}`).innerHTML
+          price = result.Menu_price * x
+          console.log(`ต่าของอาหารที่ ${result.Menu_code} คือ ${x} ราคารวม ${price}`)
+
+          if (x != 0) {
+
+            Axios.post('http://localhost:8888/setmenu', {
+              Detail_amount: x,
+              Menu_code: result.Menu_code,
+              Detail_price: price,
+              Head_code: headcodevar
+            }).then((result) => {
+
+            })
+
+          }
+
+
+        }
+
+
+
+      })
+
+
+
+
+    })
+
+
+
+    // วน loop เพิ่ม รายกายอาหาร
 
   }
+
 
 
   return (
@@ -60,8 +135,55 @@ function Selectbeef() {
             <div className="button-g text-center mt-2 d-inline-block mx-3">
               ประวัติการสั่งอาหาร
             </div>
-            <div className="button-gr text-center mt-2 d-inline-block mx-3" >
-              <Link className="link text-w" to="/mobile/end">ส่งรายการอาหาร</Link>
+            <div onClick={() => {
+
+              var check = false
+              allMenu.map((result, key) => {
+
+                if (document.getElementById(`${result.Menu_code}`) != null) {
+
+
+
+                  var x = document.getElementById(`${result.Menu_code}`).innerHTML
+
+                  if (x > 0) {
+
+
+
+                    check = true
+
+                  }
+
+
+
+
+
+                }
+
+              })
+
+              if (check) {
+                SendOrder()
+
+
+                window.setTimeout(function () {
+                  navigate(`/mobile/end/${tid}`);
+                }, 1000)
+                console.log("success")
+
+              } else {
+                alert("กรุณาใส่จำนวนเมนูอาหารและเครื่องดื่ม")
+              }
+
+
+
+
+
+
+            }}
+              className="button-gr text-center mt-2 d-inline-block mx-3" >
+
+              <div className="link text-w" to="/mobile/end">ส่งรายการอาหาร</div>
 
             </div>
           </div>
@@ -80,9 +202,28 @@ function Selectbeef() {
           </div>
           <h1 id="asd" className="mt-5" >เนื้อสัตว์</h1>
           <hr className="my-0 hr21" />
+
+
           {
+
+
+
+
             beefMenu.map((result, key) => {
-              console.log(key)
+
+
+              // if ( document.getElementById(`${result.Menu_code}`) != null ) {
+
+              //   var x = document.getElementById(`${result.Menu_code}`).innerHTML
+
+              //       if (x > 0 ) {
+              //       console.log(result.Menu_code)
+              //       }
+
+              // }
+
+
+
 
 
 
@@ -104,8 +245,12 @@ function Selectbeef() {
                       <div onClick={() => {
                         var z = document.getElementById(`${result.Menu_code}`)
                         z = parseInt(z.innerHTML) + 1
-                        var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                        if (z >= 10) {
+                          z = 10
+                        }
 
+                        var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                        SetAmount(y)
 
                       }} className="add-but text-center mt-2">
                         +
@@ -121,6 +266,7 @@ function Selectbeef() {
                             z = 0
                           }
                           var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                          SetAmount(y)
 
 
                         }} className="down-but text-center mt-2">
@@ -155,13 +301,34 @@ function Selectbeef() {
                       <p>ราคา {result.Menu_price} บาท</p>
                     </div>
                     <div className="col-2">
-                      <div className="add-but text-center mt-2">
+                      <div onClick={() => {
+                        var z = document.getElementById(`${result.Menu_code}`)
+                        z = parseInt(z.innerHTML) + 1
+                        if (z >= 10) {
+                          z = 10
+                        }
+
+                        var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                        SetAmount(y)
+
+                      }} className="add-but text-center mt-2">
                         +
                       </div>
-                      <div className="mt-2 text-center">
-                        1
+                      <div id={result.Menu_code} className="mt-2 text-center">
+                        0
                       </div>
-                      <div className="down-but text-center mt-2">
+                      <div
+                        onClick={() => {
+                          var z = document.getElementById(`${result.Menu_code}`)
+                          z = parseInt(z.innerHTML) - 1
+                          if (z <= 0) {
+                            z = 0
+                          }
+                          var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                          SetAmount(y)
+
+
+                        }} className="down-but text-center mt-2">
                         -
                       </div>
                     </div>
@@ -193,13 +360,34 @@ function Selectbeef() {
                       <p>ราคา {result.Menu_price} บาท</p>
                     </div>
                     <div className="col-2">
-                      <div className="add-but text-center mt-2">
+                      <div onClick={() => {
+                        var z = document.getElementById(`${result.Menu_code}`)
+                        z = parseInt(z.innerHTML) + 1
+                        if (z >= 10) {
+                          z = 10
+                        }
+
+                        var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                        SetAmount(y)
+
+                      }} className="add-but text-center mt-2">
                         +
                       </div>
-                      <div className="mt-2 text-center">
-                        1
+                      <div id={result.Menu_code} className="mt-2 text-center">
+                        0
                       </div>
-                      <div className="down-but text-center mt-2">
+                      <div
+                        onClick={() => {
+                          var z = document.getElementById(`${result.Menu_code}`)
+                          z = parseInt(z.innerHTML) - 1
+                          if (z <= 0) {
+                            z = 0
+                          }
+                          var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                          SetAmount(y)
+
+
+                        }} className="down-but text-center mt-2">
                         -
                       </div>
                     </div>
@@ -231,13 +419,34 @@ function Selectbeef() {
                       <p>ราคา {result.Menu_price} บาท</p>
                     </div>
                     <div className="col-2">
-                      <div className="add-but text-center mt-2">
+                      <div onClick={() => {
+                        var z = document.getElementById(`${result.Menu_code}`)
+                        z = parseInt(z.innerHTML) + 1
+                        if (z >= 10) {
+                          z = 10
+                        }
+
+                        var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                        SetAmount(y)
+
+                      }} className="add-but text-center mt-2">
                         +
                       </div>
-                      <div className="mt-2 text-center">
-                        1
+                      <div id={result.Menu_code} className="mt-2 text-center">
+                        0
                       </div>
-                      <div className="down-but text-center mt-2">
+                      <div
+                        onClick={() => {
+                          var z = document.getElementById(`${result.Menu_code}`)
+                          z = parseInt(z.innerHTML) - 1
+                          if (z <= 0) {
+                            z = 0
+                          }
+                          var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                          SetAmount(y)
+
+
+                        }} className="down-but text-center mt-2">
                         -
                       </div>
                     </div>

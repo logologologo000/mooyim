@@ -9,10 +9,11 @@ import { useHistory } from "react-router-dom";
 // import { MdAssignment } from "react-icons/md";
 // import { GoEye } from "react-icons/go";
  import { AiFillCheckCircle } from "react-icons/ai";
+ import { useParams } from 'react-router-dom'
 
 function End() {
-  
-
+    const { tid } = useParams();
+    
   return (
     <div className="container text-center">
         <div className="mt-5">
@@ -27,7 +28,8 @@ function End() {
             <div className="button-g mt-3 d-inline-block mx-3">ประวัติการสั่ง</div>
 
         </Link>
-        <Link to="/mobile/beef">
+        <Link to={`/mobile/${tid}/beef`}>
+
             <div className="button-g mt-3 d-inline-block mx-3">สั่งอาหารและเครื่งดื่ม</div>
 
         </Link>

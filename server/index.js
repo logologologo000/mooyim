@@ -51,14 +51,25 @@ app.get('/fastmenu', (req , res) => {
     })
 })
 
+app.get('/allmenu', (req , res) => {
+    connection.execute('SELECT * from menu_master').then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
 //////////////////////////////////////////////////// Order //////////////////////////////////////////////////////////////////
 
-app.post('/insorder', (req , res) => {
-    const table_id = req.body.table_id
-    const user_code = req.body.user_code
+app.get('/insorder/:id', (req , res) => {
+    const table_id = req.params.id
+    
     console.log(table_id)
-    console.log(user_code)
-    connection.execute('Insert INTO order_head (Table_id , User_code) VALUES (?,?)', [table_id , user_code])
+    
+    connection.execute('Insert INTO order_head (Table_code ) VALUES (?)', [table_id]).then(()=> {
+        
+        connection.execute('SELECT LAST_INSERT_ID()').then(([result]) => {
+            console.log(result)
+            res.status(200).send(result).end()
+        })
+    })
 })
 
 
