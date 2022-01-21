@@ -55,15 +55,16 @@
     margin-bottom: 10px;
 }
 .bgc-login {
-    background-color: rgb(233, 181, 11);
-    height: 1100px;
+    
+    
 }
 .login {
     width: 500px;
     height:400px;
     background-color: rgba(255, 255, 255, 0.699);
     margin: auto;
-    margin-top:300px;
+    margin-top:150px;
+    margin-bottom:150px;
 }
 .input-username {
     background-color: rgb(255, 255, 255);

@@ -9,13 +9,15 @@ import { useHistory } from "react-router-dom";
 // import { MdAssignment } from "react-icons/md";
 // import { GoEye } from "react-icons/go";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
+import logo from "../../Logo001.png";
 
 function Login() {
 
 
   return (
-    <div className=" bgc-login p-1">
-      <div className="login text-center p-5">
+    <div style={{ backgroundImage: `url(${logo})`}} className="bgc-login p-1">
+      
+      <div className="login text-center p-5"  >
         <h1> MOOYIMJIMJUM</h1>
         <input className="input-username my-3" placeholder=":username" />
         <input className="input-password" placeholder=":password" />
