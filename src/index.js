@@ -55,16 +55,16 @@ export default function Apps() {
       <Routes>
         
         <Route path="/" element={<LoginEmp />} />
-        <Route path="/emp/order" element={<div><NavEmp /><OrderEmp /></div>} />
-        <Route path="/emp/history" element={<div><NavEmp /><HistoryEmp /></div>} />
+        <Route path="/emp/order/:uid" element={<div><NavEmp /><OrderEmp /></div>} />
+        <Route path="/emp/history/:uid" element={<div><NavEmp /><HistoryEmp /></div>} />
         <Route path="/emp/order/detail" element={<div><NavEmp /><OrderdetailEmp /></div>} />
         <Route path="/emp/order/print" element={<div><NavEmp /><PrintEmp /></div>} />
-        <Route path="/emp/manu" element={<div><NavEmp /><ManuEmp /></div>} />
-        <Route path="/emp/table" element={<div><NavEmp /><TableEmp /></div>} />
+        <Route path="/emp/manu/:uid" element={<div><NavEmp /><ManuEmp /></div>} />
+        <Route path="/emp/table/:uid" element={<div><NavEmp /><TableEmp /></div>} />
         <Route path="/emp/table/detail" element={<div><NavEmp /><TabledetailEmp /></div>} />
 
         <Route path="/admin/table" element={<div><NavAdmin /><TableAdmin /></div>} />
-        <Route path="/admin/manu" element={<div><NavAdmin /><ManuAdmin /></div>} />
+        <Route path="/admin/manu/:id" element={<div><NavAdmin /><ManuAdmin /></div>} />
         <Route path="/admin/employee" element={<div><NavAdmin /><EmployeeAdmin /></div>} />
         <Route path="/admin/manu/addmanu" element={<div><NavAdmin /><AddmanuAdmin /></div>} />
         <Route path="/admin/employee/addemployee" element={<div><NavAdmin /><AddemployeeAdmin /></div>} />
@@ -73,7 +73,7 @@ export default function Apps() {
         <Route path="/admin/employee/employeedetail/employeefix" element={<div><NavAdmin /><EmployeefixAdmin /></div>} />
         <Route path="/admin/table/addtable" element={<div><NavAdmin /><AddtableAdmin /></div>} />
         <Route path="/admin/manu/manufix" element={<div><NavAdmin /><ManufixAdmin /></div>} />
-        <Route path="/admin/order" element={<div><NavAdmin /><OrderAdmin /></div>} />
+        <Route path="/admin/order/:uid" element={<div><NavAdmin /><OrderAdmin /></div>} />
         <Route path="/admin/order/print" element={<div><NavAdmin /><PrintAdmin /></div>} />
         <Route path="/admin/order/orderdetail" element={<div><NavAdmin /><OrderdetailAdmin /></div>} />
         <Route path="/admin/history" element={<div><NavAdmin /><HistoryAdmin /></div>} />

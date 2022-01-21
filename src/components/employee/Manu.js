@@ -12,6 +12,24 @@ import { useHistory } from "react-router-dom";
 
 function Manu() {
 
+    const [menu, Setmenu] = useState([])
+    useEffect(() => {
+        Axios.get('http://localhost:8888/allmenu').then((result) => {
+            Setmenu(result.data)
+        })
+    }, [menu]);
+
+    const Onm = (e) => {
+        Axios.get(`http://localhost:8888/onmenu/${e}`).then((result) => {
+            
+        })
+    }
+
+    const Offm = (e) => {
+        Axios.get(`http://localhost:8888/offmenu/${e}`).then((result) => {
+            
+        })
+    }
 
     return (
         <div>
@@ -34,30 +52,49 @@ function Manu() {
                     </div>
                 </div>
             </div>
-            <div className="row bgc-g py-3 mb-2 zzzborder" style={{ height: 200 }}>
-                <div className="col-3 text-center">
-                    <div className="photo-size mt-2">
-                    </div>
-                </div>
-                <div className="col-2 text-center pt-5 mt-4">
-                    <h3>001</h3>
-                </div>
-                <div className="col-2 text-center pt-5 mt-4">
-                    <h3>หมู</h3>
-                </div>
-                <div className="col-2 text-center pt-5 mt-32">
-                    <h5>สถานะ:เปิด</h5>
-                </div>
-                <div className="col-3 text-center text-w pt-5">
 
-                    <Link className="link text-w" to="#">
-                        <div className="openclose-but mt-4" type="button">
-                            เปิด/ปิด 
+            {
+                menu.map((result, key) => {
+
+                    return (
+
+                        <div className="row bgc-g py-3 mb-2 zzzborder" style={{ height: 200 }}>
+                            <div className="col-3 text-center">
+                                <div className="photo-size mt-2">
+                                </div>
+                            </div>
+                            <div className="col-2 text-center pt-5 mt-4">
+                                <h3>{result.Menu_code}</h3>
+                            </div>
+                            <div className="col-2 text-center pt-5 mt-4">
+                                <h3>{result.Menu_nameTH}</h3>
+                            </div>
+                            <div className="col-2 text-center pt-5 mt-32">
+                            {result.status == 1 ? <h5>เปิด</h5> : <h5>ปิด</h5>}
+                                
+                            </div>
+                            <div className="col-3 text-center text-w pt-5">
+
+                                <div onClick={() => {
+                                    if(result.status == 1) {
+                                        Offm(result.Menu_code)
+                                    }else {
+                                        Onm(result.Menu_code)
+                                    }
+                                }} className="link text-w" >
+                                    <div className="openclose-but mt-4" type="button">
+                                        เปิด/ปิด
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                    </Link>
-                </div>
 
-            </div>
+
+                    )
+                })
+            }
+
         </div>
 
 

@@ -35,6 +35,7 @@ function Selectbeef() {
   useEffect(() => {
 
     Axios.get('http://localhost:8888/beefmenu').then((result) => {
+
       SetBeefmenu(result.data)
 
     })
@@ -99,7 +100,7 @@ function Selectbeef() {
               Menu_code: result.Menu_code,
               Detail_price: price,
               Head_code: headcodevar,
-              tid : tid
+              tid: tid
             }).then((result) => {
 
             })
@@ -132,10 +133,10 @@ function Selectbeef() {
 
       <nav className="fixed-bottom">
         <div className="bgc-g py-2">
-          <div  className="my-3">
+          <div className="my-3">
             <div onClick={() => {
-            navigate(`/mobile/history/${tid}`);
-          }} className="button-g text-center mt-2 d-inline-block mx-3">
+              navigate(`/mobile/history/${tid}`);
+            }} className="button-g text-center mt-2 d-inline-block mx-3">
               ประวัติการสั่งอาหาร
             </div>
 
@@ -216,73 +217,73 @@ function Selectbeef() {
             beefMenu.map((result, key) => {
 
 
-              // if ( document.getElementById(`${result.Menu_code}`) != null ) {
-
-              //   var x = document.getElementById(`${result.Menu_code}`).innerHTML
-
-              //       if (x > 0 ) {
-              //       console.log(result.Menu_code)
-              //       }
-
-              // }
+              if (result.status == 1) {
 
 
 
 
 
 
-              return (
 
-                <div key={key}>
 
-                  <div className="row bgc-g mt-3">
-                    <div className="col-5">
-                      <div className="py-5 text-center">
-                        รูป
+
+
+
+                return (
+
+                  <div key={key}>
+
+                    <div className="row bgc-g mt-3">
+                      <div className="col-5">
+                        <div className="py-5 text-center">
+                          รูป
+                        </div>
                       </div>
-                    </div>
-                    <div className="col-5 pt-3">
-                      <h3>{result.Menu_nameTH}</h3>
-                      <p>ราคา {result.Menu_price} บาท</p>
-                    </div>
-                    <div className="col-2">
-                      <div onClick={() => {
-                        var z = document.getElementById(`${result.Menu_code}`)
-                        z = parseInt(z.innerHTML) + 1
-                        if (z >= 10) {
-                          z = 10
-                        }
-
-                        var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
-                        SetAmount(y)
-
-                      }} className="add-but text-center mt-2">
-                        +
+                      <div className="col-5 pt-3">
+                        <h3>{result.Menu_nameTH}</h3>
+                        <p>ราคา {result.Menu_price} บาท</p>
                       </div>
-                      <div id={result.Menu_code} className="mt-2 text-center">
-                        0
-                      </div>
-                      <div
-                        onClick={() => {
+                      <div className="col-2">
+                        <div onClick={() => {
                           var z = document.getElementById(`${result.Menu_code}`)
-                          z = parseInt(z.innerHTML) - 1
-                          if (z <= 0) {
-                            z = 0
+                          z = parseInt(z.innerHTML) + 1
+                          if (z >= 10) {
+                            z = 10
                           }
+
                           var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
                           SetAmount(y)
 
+                        }} className="add-but text-center mt-2">
+                          +
+                        </div>
+                        <div id={result.Menu_code} className="mt-2 text-center">
+                          0
+                        </div>
+                        <div
+                          onClick={() => {
+                            var z = document.getElementById(`${result.Menu_code}`)
+                            z = parseInt(z.innerHTML) - 1
+                            if (z <= 0) {
+                              z = 0
+                            }
+                            var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                            SetAmount(y)
 
-                        }} className="down-but text-center mt-2">
-                        -
+
+                          }} className="down-but text-center mt-2">
+                          -
+                        </div>
                       </div>
+
+
                     </div>
 
-
                   </div>
+                )
 
-                </div>
-              )
+              }
+
             })
           }
           <h1 className="" id="vet"><br /></h1>
@@ -292,56 +293,59 @@ function Selectbeef() {
 
           {
             vetMenu.map((result, key) => {
-              return (
-                <div key={key}>
-                  <div className="row bgc-g mt-3">
-                    <div className="col-5">
-                      <div className="py-5 text-center">
-                        รูป
-                      </div>
-                    </div>
-                    <div className="col-5 pt-3">
-                      <h3>{result.Menu_nameTH}</h3>
-                      <p>ราคา {result.Menu_price} บาท</p>
-                    </div>
-                    <div className="col-2">
-                      <div onClick={() => {
-                        var z = document.getElementById(`${result.Menu_code}`)
-                        z = parseInt(z.innerHTML) + 1
-                        if (z >= 10) {
-                          z = 10
-                        }
 
-                        var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
-                        SetAmount(y)
-
-                      }} className="add-but text-center mt-2">
-                        +
+              if (result.status == 1) {
+                return (
+                  <div key={key}>
+                    <div className="row bgc-g mt-3">
+                      <div className="col-5">
+                        <div className="py-5 text-center">
+                          รูป
+                        </div>
                       </div>
-                      <div id={result.Menu_code} className="mt-2 text-center">
-                        0
+                      <div className="col-5 pt-3">
+                        <h3>{result.Menu_nameTH}</h3>
+                        <p>ราคา {result.Menu_price} บาท</p>
                       </div>
-                      <div
-                        onClick={() => {
+                      <div className="col-2">
+                        <div onClick={() => {
                           var z = document.getElementById(`${result.Menu_code}`)
-                          z = parseInt(z.innerHTML) - 1
-                          if (z <= 0) {
-                            z = 0
+                          z = parseInt(z.innerHTML) + 1
+                          if (z >= 10) {
+                            z = 10
                           }
+
                           var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
                           SetAmount(y)
 
+                        }} className="add-but text-center mt-2">
+                          +
+                        </div>
+                        <div id={result.Menu_code} className="mt-2 text-center">
+                          0
+                        </div>
+                        <div
+                          onClick={() => {
+                            var z = document.getElementById(`${result.Menu_code}`)
+                            z = parseInt(z.innerHTML) - 1
+                            if (z <= 0) {
+                              z = 0
+                            }
+                            var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                            SetAmount(y)
 
-                        }} className="down-but text-center mt-2">
-                        -
+
+                          }} className="down-but text-center mt-2">
+                          -
+                        </div>
                       </div>
+
+
                     </div>
 
-
                   </div>
-
-                </div>
-              )
+                )
+              }
             })
           }
           <h1 className="" id="fast"><br /></h1>
@@ -351,56 +355,59 @@ function Selectbeef() {
 
           {
             fastMenu.map((result, key) => {
-              return (
-                <div key={key}>
-                  <div className="row bgc-g mt-3">
-                    <div className="col-5">
-                      <div className="py-5 text-center">
-                        รูป
-                      </div>
-                    </div>
-                    <div className="col-5 pt-3">
-                      <h3>{result.Menu_nameTH}</h3>
-                      <p>ราคา {result.Menu_price} บาท</p>
-                    </div>
-                    <div className="col-2">
-                      <div onClick={() => {
-                        var z = document.getElementById(`${result.Menu_code}`)
-                        z = parseInt(z.innerHTML) + 1
-                        if (z >= 10) {
-                          z = 10
-                        }
 
-                        var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
-                        SetAmount(y)
-
-                      }} className="add-but text-center mt-2">
-                        +
+              if (result.status == 1) {
+                return (
+                  <div key={key}>
+                    <div className="row bgc-g mt-3">
+                      <div className="col-5">
+                        <div className="py-5 text-center">
+                          รูป
+                        </div>
                       </div>
-                      <div id={result.Menu_code} className="mt-2 text-center">
-                        0
+                      <div className="col-5 pt-3">
+                        <h3>{result.Menu_nameTH}</h3>
+                        <p>ราคา {result.Menu_price} บาท</p>
                       </div>
-                      <div
-                        onClick={() => {
+                      <div className="col-2">
+                        <div onClick={() => {
                           var z = document.getElementById(`${result.Menu_code}`)
-                          z = parseInt(z.innerHTML) - 1
-                          if (z <= 0) {
-                            z = 0
+                          z = parseInt(z.innerHTML) + 1
+                          if (z >= 10) {
+                            z = 10
                           }
+
                           var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
                           SetAmount(y)
 
+                        }} className="add-but text-center mt-2">
+                          +
+                        </div>
+                        <div id={result.Menu_code} className="mt-2 text-center">
+                          0
+                        </div>
+                        <div
+                          onClick={() => {
+                            var z = document.getElementById(`${result.Menu_code}`)
+                            z = parseInt(z.innerHTML) - 1
+                            if (z <= 0) {
+                              z = 0
+                            }
+                            var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                            SetAmount(y)
 
-                        }} className="down-but text-center mt-2">
-                        -
+
+                          }} className="down-but text-center mt-2">
+                          -
+                        </div>
                       </div>
+
+
                     </div>
 
-
                   </div>
-
-                </div>
-              )
+                )
+              }
             })
           }
           <h1 className="" id="drink"><br /></h1>
@@ -410,56 +417,59 @@ function Selectbeef() {
 
           {
             drinkMenu.map((result, key) => {
-              return (
-                <div key={key}>
-                  <div className="row bgc-g mt-3">
-                    <div className="col-5">
-                      <div className="py-5 text-center">
-                        รูป
-                      </div>
-                    </div>
-                    <div className="col-5 pt-3">
-                      <h3>{result.Menu_nameTH}</h3>
-                      <p>ราคา {result.Menu_price} บาท</p>
-                    </div>
-                    <div className="col-2">
-                      <div onClick={() => {
-                        var z = document.getElementById(`${result.Menu_code}`)
-                        z = parseInt(z.innerHTML) + 1
-                        if (z >= 10) {
-                          z = 10
-                        }
 
-                        var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
-                        SetAmount(y)
-
-                      }} className="add-but text-center mt-2">
-                        +
+              if (result.status == 1) {
+                return (
+                  <div key={key}>
+                    <div className="row bgc-g mt-3">
+                      <div className="col-5">
+                        <div className="py-5 text-center">
+                          รูป
+                        </div>
                       </div>
-                      <div id={result.Menu_code} className="mt-2 text-center">
-                        0
+                      <div className="col-5 pt-3">
+                        <h3>{result.Menu_nameTH}</h3>
+                        <p>ราคา {result.Menu_price} บาท</p>
                       </div>
-                      <div
-                        onClick={() => {
+                      <div className="col-2">
+                        <div onClick={() => {
                           var z = document.getElementById(`${result.Menu_code}`)
-                          z = parseInt(z.innerHTML) - 1
-                          if (z <= 0) {
-                            z = 0
+                          z = parseInt(z.innerHTML) + 1
+                          if (z >= 10) {
+                            z = 10
                           }
+
                           var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
                           SetAmount(y)
 
+                        }} className="add-but text-center mt-2">
+                          +
+                        </div>
+                        <div id={result.Menu_code} className="mt-2 text-center">
+                          0
+                        </div>
+                        <div
+                          onClick={() => {
+                            var z = document.getElementById(`${result.Menu_code}`)
+                            z = parseInt(z.innerHTML) - 1
+                            if (z <= 0) {
+                              z = 0
+                            }
+                            var y = document.getElementById(`${result.Menu_code}`).innerHTML = z
+                            SetAmount(y)
 
-                        }} className="down-but text-center mt-2">
-                        -
+
+                          }} className="down-but text-center mt-2">
+                          -
+                        </div>
                       </div>
+
+
                     </div>
 
-
                   </div>
-
-                </div>
-              )
+                )
+              }
             })
           }
 

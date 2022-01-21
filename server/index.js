@@ -20,38 +20,38 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileUpload())
 
 var port = 8888;
 
 ///////////////////////////////////////////////////////////Mobile get/////////////////////////////////////////////////////////////////
 
-app.get('/beefmenu', (req , res) => {
+app.get('/beefmenu', (req, res) => {
     connection.execute('SELECT * from menu_master WHERE type_id = 001').then(([result]) => {
         res.status(200).send(result).end()
     })
 })
 
-app.get('/vetmenu', (req , res) => {
+app.get('/vetmenu', (req, res) => {
     connection.execute('SELECT * from menu_master WHERE type_id = 003').then(([result]) => {
         res.status(200).send(result).end()
     })
 })
 
-app.get('/drinkmenu', (req , res) => {
+app.get('/drinkmenu', (req, res) => {
     connection.execute('SELECT * from menu_master WHERE type_id = 004').then(([result]) => {
         res.status(200).send(result).end()
     })
 })
 
-app.get('/fastmenu', (req , res) => {
+app.get('/fastmenu', (req, res) => {
     connection.execute('SELECT * from menu_master WHERE type_id = 002').then(([result]) => {
         res.status(200).send(result).end()
     })
 })
 
-app.get('/allmenu', (req , res) => {
+app.get('/allmenu', (req, res) => {
     connection.execute('SELECT * from menu_master').then(([result]) => {
         res.status(200).send(result).end()
     })
@@ -59,47 +59,47 @@ app.get('/allmenu', (req , res) => {
 //////////////////////////////////////////////////// Order //////////////////////////////////////////////////////////////////
 
 /// get order by table 
-app.get('/ordert/:tid', (req , res) => {
+app.get('/ordert/:tid', (req, res) => {
     var tid = req.params.tid
-    connection.execute('SELECT * FROM order_head WHERE Table_code=(?)' , [tid]).then(([result]) => {
+    connection.execute('SELECT * FROM order_head WHERE Table_code=(?)', [tid]).then(([result]) => {
         res.status(200).send(result).end()
     })
 })
 
 /// get order by table 
-app.post('/geto/:tid', (req , res) => {
+app.post('/geto/:tid', (req, res) => {
     var tid = req.params.tid
     var oid = req.body.oid
     console.log(tid)
     console.log(oid)
-    connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Table_code = (?) and Head_code = (?)' , [tid, oid]).then(([result]) => {
+    connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Table_code = (?) and Head_code = (?)', [tid, oid]).then(([result]) => {
         res.status(200).send(result).end()
     })
 })
 
 /// get order by table 
-app.get('/getorderbt/:tid', (req , res) => {
+app.get('/getorderbt/:tid', (req, res) => {
     var tid = req.params.tid
-    connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Table_code = (?)' , [tid]).then(([result]) => {
+    connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Table_code = (?)', [tid]).then(([result]) => {
         res.status(200).send(result).end()
     })
 })
 ////get order by order ID
-app.get('/order/:oid', (req , res) => {
+app.get('/order/:oid', (req, res) => {
     const oid = req.params.oid
-    connection.execute('SELECT * FROM order_detail WHERE Head_code = (?)' , [oid]).then(([result]) => {
+    connection.execute('SELECT * FROM order_detail WHERE Head_code = (?)', [oid]).then(([result]) => {
         res.status(200).send(result).end()
     })
 })
 
 //// สร้างออเดอร์
-app.get('/insorder/:id', (req , res) => {
+app.get('/insorder/:id', (req, res) => {
     const table_id = req.params.id
-    
+
     console.log(table_id)
-    
-    connection.execute('Insert INTO order_head (Table_code ) VALUES (?)', [table_id]).then(()=> {
-        
+
+    connection.execute('Insert INTO order_head (Table_code ) VALUES (?)', [table_id]).then(() => {
+
         connection.execute('SELECT LAST_INSERT_ID()').then(([result]) => {
             console.log(result)
             res.status(200).send(result).end()
@@ -108,10 +108,10 @@ app.get('/insorder/:id', (req , res) => {
 })
 
 /////get order by detail code and as type
-app.get('/ordertype/:oid', (req , res) => {
+app.get('/ordertype/:oid', (req, res) => {
     const oid = req.params.oid
 
-    connection.execute('SELECT * from order_detail WHERE Detail_code = (?)' , [oid]).then(([result]) => {
+    connection.execute('SELECT * from order_detail WHERE Detail_code = (?)', [oid]).then(([result]) => {
         res.status(200).send(result).end()
     })
 })
@@ -119,22 +119,62 @@ app.get('/ordertype/:oid', (req , res) => {
 
 //////////////////////////////////////////////////// Menu //////////////////////////////////////////////////////////////////
 
+///////////// on menu
+app.get('/onmenu/:id', (req , res) => {
+    const id = req.params.id
+    console.log(id)
+    connection.execute('UPDATE menu_master SET status = 1 WHERE Menu_code = (?)', [id]).then((result) => {
+        res.status(200).end()
+    })
+    
+})
 
+///////////// off menu
+app.get('/offmenu/:id', (req , res) => {
+    const id = req.params.id
+
+    connection.execute('UPDATE menu_master SET status = 0 WHERE Menu_code = (?)', [id]).then((result) => {
+        res.status(200).end()
+    })
+    
+})
 
 //// เพิ่มรายการอาหาร
-app.post('/setmenu', (req , res) => {
+app.post('/setmenu', (req, res) => {
     const Detail_amount = req.body.Detail_amount
     const Menu_code = req.body.Menu_code
     const Detail_price = req.body.Detail_price
     const Head_code = req.body.Head_code
     const tid = req.body.tid
 
-    connection.execute('Insert INTO order_detail (Detail_amount, Menu_code , Detail_price , Head_code , Table_code) VALUES (?,?,?,?,?)', 
-    [Detail_amount , Menu_code , Detail_price , Head_code , tid]).then(([result]) => {
-        res.status(200).send("success").end()
-    })
+    connection.execute('Insert INTO order_detail (Detail_amount, Menu_code , Detail_price , Head_code , Table_code) VALUES (?,?,?,?,?)',
+        [Detail_amount, Menu_code, Detail_price, Head_code, tid]).then(([result]) => {
+            res.status(200).send("success").end()
+        })
 })
-////////////////////////////////////////////////////
+//////////////////////////////////////////////////// EMP ///////////////////////////////////////////////////////////
+
+app.post('/login', (req, res) => {
+    const username = req.body.username
+    const tel = req.body.tel
+    try {
+        connection.execute('SELECT * from user_master where User_id = (?)', [username]).then(([result]) => {
+
+
+
+            if (username == result[0].User_id && tel == result[0].tel) {
+
+
+                res.status(200).send(result).end()
+
+            }
+
+        })
+    } catch (error) {
+
+    }
+
+})
 
 app.listen(port, (req, res) => {
     console.log(`Node app is Running on port ${port}...`)

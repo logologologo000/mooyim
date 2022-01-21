@@ -9,8 +9,12 @@ import { useHistory } from "react-router-dom";
 // import { MdAssignment } from "react-icons/md";
 // import { GoEye } from "react-icons/go";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 
 function Nav() {
+  var navigate = useNavigate();
+  const { uid } = useParams();
 
 
   return (
@@ -40,20 +44,20 @@ function Nav() {
           <div className="row">
             <div className="col-8 text-start">
               <div className="d-inline-block text-w mx-3 font-25">
-                <Link className="link link:hover text-w" to="/emp/order">ออร์เดอร์</Link>
+                <Link className="link link:hover text-w" to={`/emp/order/${uid}`}>ออร์เดอร์</Link>
 
               </div>
               <div className="d-inline-block text-w font-25">
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-                <Link className="link link:hover text-w" to="/emp/history">ประวัติ</Link>
+                <Link className="link link:hover text-w" to={`/emp/history/${uid}`} >ประวัติ</Link>
               </div>
               <div className="d-inline-block text-w font-25">
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-              <Link className="link link:hover text-w" to="/emp/manu">
+              <Link className="link link:hover text-w" to={`/emp/manu/${uid}`} >
                 รายการอาหาร
                 </Link>
               </div>
@@ -61,7 +65,7 @@ function Nav() {
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-              <Link className="link link:hover text-w" to="/emp/table">
+              <Link className="link link:hover text-w" to={`/emp/table/${uid}`}>
                 โต๊ะ
                 </Link>
               </div>
