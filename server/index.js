@@ -58,6 +58,41 @@ app.get('/allmenu', (req , res) => {
 })
 //////////////////////////////////////////////////// Order //////////////////////////////////////////////////////////////////
 
+/// get order by table 
+app.get('/ordert/:tid', (req , res) => {
+    var tid = req.params.tid
+    connection.execute('SELECT * FROM order_head WHERE Table_code=(?)' , [tid]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+/// get order by table 
+app.post('/geto/:tid', (req , res) => {
+    var tid = req.params.tid
+    var oid = req.body.oid
+    console.log(tid)
+    console.log(oid)
+    connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Table_code = (?) and Head_code = (?)' , [tid, oid]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+/// get order by table 
+app.get('/getorderbt/:tid', (req , res) => {
+    var tid = req.params.tid
+    connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Table_code = (?)' , [tid]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+////get order by order ID
+app.get('/order/:oid', (req , res) => {
+    const oid = req.params.oid
+    connection.execute('SELECT * FROM order_detail WHERE Head_code = (?)' , [oid]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+//// สร้างออเดอร์
 app.get('/insorder/:id', (req , res) => {
     const table_id = req.params.id
     
@@ -72,20 +107,34 @@ app.get('/insorder/:id', (req , res) => {
     })
 })
 
+/////get order by detail code and as type
+app.get('/ordertype/:oid', (req , res) => {
+    const oid = req.params.oid
+
+    connection.execute('SELECT * from order_detail WHERE Detail_code = (?)' , [oid]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
 
 //////////////////////////////////////////////////// Menu //////////////////////////////////////////////////////////////////
 
+
+
+//// เพิ่มรายการอาหาร
 app.post('/setmenu', (req , res) => {
     const Detail_amount = req.body.Detail_amount
     const Menu_code = req.body.Menu_code
     const Detail_price = req.body.Detail_price
     const Head_code = req.body.Head_code
+    const tid = req.body.tid
 
-    connection.execute('Insert INTO order_detail (Detail_amount, Menu_code , Detail_price , Head_code) VALUES (?,?,?,?)', 
-    [Detail_amount , Menu_code , Detail_price , Head_code ]).then(([result]) => {
+    connection.execute('Insert INTO order_detail (Detail_amount, Menu_code , Detail_price , Head_code , Table_code) VALUES (?,?,?,?,?)', 
+    [Detail_amount , Menu_code , Detail_price , Head_code , tid]).then(([result]) => {
         res.status(200).send("success").end()
     })
 })
+////////////////////////////////////////////////////
 
 app.listen(port, (req, res) => {
     console.log(`Node app is Running on port ${port}...`)

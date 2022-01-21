@@ -7,6 +7,7 @@ import SelectbeefMobile from './components/mobile/Selectbeef'
 import SelectvetMobile from './components/mobile/Selectvet'
 import EndMobile from './components/mobile/End'
 import HisMobile from './components/mobile/History'
+import HisdMobile from './components/mobile/Hdetail'
 import NavMobile from './components/mobile/Nav'
 import SelectdrinkMobile from './components/mobile/Selectdrink'
 import SelectfastMobile from './components/mobile/Selectfast'
@@ -85,7 +86,8 @@ export default function Apps() {
         <Route path="/mobile/drink" element={<div><NavMobile /><SelectdrinkMobile /></div>} />
         <Route path="/mobile/fast" element={<div><NavMobile /><SelectfastMobile /></div>} />
         <Route path="/mobile/end/:tid" element={<div><EndMobile /></div>} />
-        <Route path="/mobile/:tid/history" element={<div><HisMobile /></div>} />
+        <Route path="/mobile/history/:tid" element={<div><HisMobile /></div>} />
+        <Route path="/mobile/history/:tid/:oid" element={<div><HisdMobile /></div>} />
         
         
 

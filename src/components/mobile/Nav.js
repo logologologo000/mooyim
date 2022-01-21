@@ -15,9 +15,11 @@ import EndMobile from './End'
 
 import SelectdrinkMobile from './Selectdrink'
 import SelectfastMobile from './Selectfast'
+import { useParams } from 'react-router-dom'
 
 
 function Nav() {
+  const { tid } = useParams();
 
 
   return (
@@ -25,7 +27,7 @@ function Nav() {
     <div className=" text-center">
       <nav className="fixed-top">
         <div className="bgc-y py-2">
-          <h1 className="text-w">โต๊ะของคุณหมายเลข 1</h1>
+          <h1 className="text-w">โต๊ะของคุณหมายเลข {tid}</h1>
         </div>
         <div className="nav-g py-2">
           <div onClick={() => {

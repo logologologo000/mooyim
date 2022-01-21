@@ -98,7 +98,8 @@ function Selectbeef() {
               Detail_amount: x,
               Menu_code: result.Menu_code,
               Detail_price: price,
-              Head_code: headcodevar
+              Head_code: headcodevar,
+              tid : tid
             }).then((result) => {
 
             })
@@ -131,10 +132,13 @@ function Selectbeef() {
 
       <nav className="fixed-bottom">
         <div className="bgc-g py-2">
-          <div className="my-3">
-            <div className="button-g text-center mt-2 d-inline-block mx-3">
+          <div  className="my-3">
+            <div onClick={() => {
+            navigate(`/mobile/history/${tid}`);
+          }} className="button-g text-center mt-2 d-inline-block mx-3">
               ประวัติการสั่งอาหาร
             </div>
+
             <div onClick={() => {
 
               var check = false

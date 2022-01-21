@@ -10,9 +10,11 @@ import { useHistory } from "react-router-dom";
 // import { GoEye } from "react-icons/go";
  import { AiFillCheckCircle } from "react-icons/ai";
  import { useParams } from 'react-router-dom'
+ import { useNavigate } from 'react-router-dom';
 
 function End() {
     const { tid } = useParams();
+  var navigate = useNavigate();
     
   return (
     <div className="container text-center">
@@ -24,7 +26,8 @@ function End() {
             สั่งรายการอาหารและเครื่องดื่มเรียบร้อย !!
         </div>
         <div className=" m-au mt-5">
-        <Link to="#">
+        <Link  to={`/mobile/history/${tid}`}>
+            
             <div className="button-g mt-3 d-inline-block mx-3">ประวัติการสั่ง</div>
 
         </Link>
