@@ -10,9 +10,30 @@ import { useHistory } from "react-router-dom";
 // import { GoEye } from "react-icons/go";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
 import { IoMdAdd } from "react-icons/io";
+import { useParams } from 'react-router-dom'
 
 function Manu() {
 
+    const { uid } = useParams();
+
+    const [menu, Setmenu] = useState([])
+    useEffect(() => {
+        Axios.get('http://localhost:8888/allmenu').then((result) => {
+            Setmenu(result.data)
+        })
+    }, [menu]);
+
+    const Onm = (e) => {
+        Axios.get(`http://localhost:8888/onmenu/${e}`).then((result) => {
+
+        })
+    }
+
+    const Offm = (e) => {
+        Axios.get(`http://localhost:8888/offmenu/${e}`).then((result) => {
+
+        })
+    }
 
     return (
         <div>
@@ -27,53 +48,70 @@ function Manu() {
                     <div className="col-2 text-center text-w">
                         เมนู
                     </div>
-                    <div className="col-2 text-center text-w">
+                    <div className="col-1 text-center text-w">
                         สถานะ
                     </div>
-                    <div className="col-3 text-center text-w">
+                    <div className="col-4 text-center text-w">
                         รายละเอียด
+
                     </div>
                     <div className="col-1 text-center">
-                        <Link className="d-inline-block"to="/admin/manu/addmanu">
+                        <Link className="d-inline-block" to={`/admin/manu/addmanu/${uid}`}>
                             <IoMdAdd className="add-icon" />
                         </Link>
                     </div>
                 </div>
             </div>
-            <div className="row bgc-g py-3 mb-2 zzzborder" style={{ height: 200 }}>
-                <div className="col-2 text-center">
-                    <div className="photo-size mt-2">
-                    </div>
-                </div>
-                <div className="col-2 text-center pt-5 mt-4">
-                    <h3>001</h3>
-                </div>
-                <div className="col-2 text-center pt-5 mt-4">
-                    <h3>หมู</h3>
-                </div>
-                <div className="col-2 text-center pt-5 mt-32">
-                    <h5>สถานะ:เปิด</h5>
-                </div>
-                <div className="col-3 text-center text-w pt-5">
 
-                    <Link className="link text-w" to="#">
-                        <div className="openclose-manu-but d-inline-block" type="button">เปิด/ปิด </div>
-                    </Link>
+            {
+                menu.map((result, key) => {
 
-                    <Link className="link text-w" to="/admin/manu/manufix">
-                        <div className="fix-manu-but d-inline-block  my-2" type="button">
-                            แก้ไข 
+                    return (
+
+                        <div className="row bgc-g py-3 mb-2 zzzborder" style={{ height: 200 }}>
+                            <div className="col-2 text-center">
+                                <div className="photo-size mt-2">
+                                </div>
                             </div>
-                    </Link>
+                            <div className="col-2 text-center pt-5 mt-4">
+                                <h3>{result.Menu_code}</h3>
+                            </div>
+                            <div className="col-2 text-center pt-5 mt-4">
+                                <h3>{result.Menu_nameTH}</h3>
+                            </div>
+                            <div className="col-1 text-center pt-5 mt-32">
+                                {result.status == 1 ? <h5 style={{ color: "green" }}>เปิด</h5> : <h5 style={{ color: "red" }}>ปิด</h5>}
 
-                
 
-                </div>
-                <div className="col-1">
-                   
-                </div>
+                            </div>
+                            <div className="col-4 text-center text-w pt-5">
 
-            </div>
+                                <div onClick={() => {
+                                    if (result.status == 1) {
+                                        Offm(result.Menu_code)
+                                    } else {
+                                        Onm(result.Menu_code)
+                                    }
+                                }} className="link text-w" >
+                                    <div className="openclose-but mt-4" type="button">
+                                        เปิด/ปิด
+                                    </div>
+                                </div>
+
+                                <Link className="link text-w" to="/admin/manu/manufix">
+                                    <div className="fix-manu-but d-inline-block  my-2" type="button">
+                                        แก้ไข
+                                    </div>
+                                </Link>
+                            </div>
+
+                        </div>
+
+
+                    )
+                })
+            }
+
         </div>
 
 
@@ -82,3 +120,4 @@ function Manu() {
 }
 
 export default Manu;
+

@@ -70,7 +70,8 @@ function Manu() {
                                 <h3>{result.Menu_nameTH}</h3>
                             </div>
                             <div className="col-2 text-center pt-5 mt-32">
-                            {result.status == 1 ? <h5>เปิด</h5> : <h5>ปิด</h5>}
+                            {result.status == 1 ? <h5 style={{color : "green"}}>เปิด</h5> : <h5 style={{color : "red"}}>ปิด</h5>}
+
                                 
                             </div>
                             <div className="col-3 text-center text-w pt-5">
@@ -86,6 +87,12 @@ function Manu() {
                                         เปิด/ปิด
                                     </div>
                                 </div>
+
+                                <Link className="link text-w" to="/admin/manu/manufix">
+                        <div className="fix-manu-but d-inline-block  my-2" type="button">
+                            แก้ไข 
+                            </div>
+                    </Link>
                             </div>
 
                         </div>

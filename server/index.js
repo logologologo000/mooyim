@@ -66,6 +66,22 @@ app.get('/ordert/:tid', (req, res) => {
     })
 })
 
+/// get order all where no print
+app.get('/orderallnp', (req, res) => {
+    
+    connection.execute('SELECT * FROM order_head where print_status = 0').then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+/// get order all where print
+app.get('/orderallp', (req, res) => {
+    
+    connection.execute('SELECT * FROM order_head where print_status = 1').then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
 /// get order by table 
 app.post('/geto/:tid', (req, res) => {
     var tid = req.params.tid
@@ -73,6 +89,16 @@ app.post('/geto/:tid', (req, res) => {
     console.log(tid)
     console.log(oid)
     connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Table_code = (?) and Head_code = (?)', [tid, oid]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+/// get order by oid 
+app.post('/geto', (req, res) => {
+    var oid = req.body.oid
+    
+    console.log(oid)
+    connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Head_code = (?)', [oid]).then(([result]) => {
         res.status(200).send(result).end()
     })
 })
@@ -175,6 +201,157 @@ app.post('/login', (req, res) => {
     }
 
 })
+
+//get all table open
+app.get('/alltable', (req, res) => {
+    connection.execute('SELECT * from table_main').then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+//get all table open
+app.get('/alltableopen', (req, res) => {
+    connection.execute('SELECT * from table_main where status = 1').then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+//get all table off
+app.get('/alltableoff', (req, res) => {
+    connection.execute('SELECT * from table_main where status = 0 ').then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+
+
+///////////// on table
+app.get('/ontable/:id', (req , res) => {
+    const id = req.params.id
+    console.log(id)
+    connection.execute('UPDATE table_main SET status = 1 WHERE Table_code = (?)', [id]).then((result) => {
+        res.status(200).end()
+    })
+    
+})
+
+///////////// off table
+app.get('/offtable/:id', (req , res) => {
+    const id = req.params.id
+
+    connection.execute('UPDATE table_main SET status = 0 WHERE Table_code = (?)', [id]).then((result) => {
+        res.status(200).end()
+    })
+    
+})
+
+
+/////////////////////////////////////////////////////ADMIN //////////////////////////////////////////////////////////
+
+///////////// get all emp
+app.get('/allemp', (req , res) => {
+    
+    connection.execute('SELECT * FROM user_master').then(([result]) => {
+        res.status(200).send(result).end()
+    })
+    
+})
+
+///////////// del emp by code
+app.get('/delemp/:id', (req , res) => {
+    const id = req.params.id
+    
+    connection.execute('Delete from user_master where User_code = (?)' , [id]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+    
+})
+
+///////////// get emp by code
+app.get('/allemp/:id', (req , res) => {
+    const id = req.params.id
+    connection.execute('SELECT * FROM user_master WHERE User_code = (?)' , [id]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+    
+})
+
+////// Add Emp
+app.post('/addemp' , (req , res) => {
+    
+    const code = req.body.ucode
+    const name = req.body.name
+    const lname = req.body.lname
+    const ustatus = req.body.ustatus
+    const tel = req.body.tel
+    connection.execute('INSERT into user_master (User_id , User_name , User_surname , Status_id , tel) values (?,?,?,?,?) ' , [ code , name ,lname ,ustatus , tel]).then((result) => {
+
+        res.status(200).end()
+    })
+})
+
+//// EDIT emp
+app.post('/editemp/:uuid', (req , res) => {
+    const code = req.params.uuid
+    const id = req.body.id
+    const name = req.body.name
+    const lname = req.body.lname
+    const ustatus = req.body.ustatus
+    const tel = req.body.tel
+    connection.execute('UPDATE user_master SET User_id = (?) ,User_name = (?), User_surname = (?), Status_id = (?), tel = (?) WHERE User_code = (?)' , [id , name , lname , ustatus , tel, code]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+    
+})
+
+////////////////////////////////////////////////////////TABLE ///////////////////////////////////////////////////////////
+
+
+////// Add Table
+app.post('/addtable' , (req , res) => {
+    
+    const table_id = req.body.table_id
+    const table_name = req.body.table_name
+    
+    connection.execute('INSERT into table_main (Table_name , Table_id ) values (?,?) ' , [ table_name , table_name]).then((result) => {
+
+        res.status(200).end()
+    })
+})
+
+////// Edit Table
+app.post('/edittable/:table_code' , (req , res) => {
+    const table_code = req.params.table_code
+    
+    const table_id = req.body.table_id
+    const table_name = req.body.table_name
+    
+    connection.execute('UPDATE table_main SET Table_id = (?) ,Table_name = (?) WHERE Table_code = (?)' , [ table_id , table_name , table_code]).then((result) => {
+
+        res.status(200).end()
+    })
+})
+
+
+///// Get table by id
+app.get('/gettable/:id' , (req , res) => {
+    const code = req.params.id
+    connection.execute('SELECT * FROM table_main WHERE table_code = (?)' , [code]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+///// Del table by id
+app.get('/deltable/:id' , (req , res) => {
+    const code = req.params.id
+    console.log(code)
+    connection.execute('Delete from table_main where Table_code = (?)' , [code]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+
+
 
 app.listen(port, (req, res) => {
     console.log(`Node app is Running on port ${port}...`)

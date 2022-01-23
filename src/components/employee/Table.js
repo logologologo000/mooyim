@@ -9,54 +9,90 @@ import { useHistory } from "react-router-dom";
 // import { MdAssignment } from "react-icons/md";
 // import { GoEye } from "react-icons/go";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
+import { useParams } from 'react-router-dom'
 
 function Table() {
+    const { uid } = useParams();
 
+    const [menu, Setmenu] = useState([])
+    useEffect(() => {
+        Axios.get('http://localhost:8888/alltable').then((result) => {
+            Setmenu(result.data)
+        })
+    }, [menu]);
+
+    const Ont = (e) => {
+        Axios.get(`http://localhost:8888/ontable/${e}`).then((result) => {
+            
+        })
+    }
+
+    const Offt = (e) => {
+        Axios.get(`http://localhost:8888/offtable/${e}`).then((result) => {
+            
+        })
+    }
 
     return (
         <div>
             <div className="nav-g py-2">
                 <div className="row font-25">
-                    <div className="col-3 text-center text-w">
-                        รหัสโต๊ะ
-                    </div>
-                    <div className="col-3 text-center text-w">
+                    
+                    <div className="col-4 text-center text-w">
                         เลขโต๊ะ
                     </div>
-                    <div className="col-3 text-center text-w">
+                    <div className="col-4 text-center text-w">
                         สถานะ
                     </div>
-                    <div className="col-3 text-center text-w">
+                    <div className="col-4 text-center text-w">
                         รายละเอียด
                     </div>
                 </div>
             </div>
-            <div className="row bgc-g zzzborder" style={{ height: 130 }}>
-                <div className="col-3 text-center py-5 mt-2">
-                    <h3>001</h3>
-                </div>
-                <div className="col-3 text-center py-5 mt-2">
-                    <h3>โต๊ะ01</h3>
-                </div>
-                <div className="col-3 text-center py-5 mt-3">
-                    <h5>สถานะ:เปิด</h5>
-                </div>
-                <div className="col-3 text-center py-4 text-w">
 
-                    <Link className="link text-w" to="#">
-                        <div className="openclose-but d-inline-block mx-2 " type="button">
-                            เปิด/ปิด
+            {
+                menu.map((result, key) => {
+
+                    return (
+
+                        <div className="row bgc-g zzzborder" style={{ height: 130 }}>
+                            
+                            <div className="col-4 text-center py-5 mt-2">
+                                <h3>{result.Table_name}</h3>
                             </div>
-                    </Link>
+                            <div className="col-4 text-center py-5 mt-3">
+                                {result.status == 1 ? <h5 style={{color : "green"}}>เปิด</h5> : <h5 style={{color : "red"}}>ปิด</h5>}
+                            </div>
+                            <div className="col-4 text-center py-4 text-w">
 
-                    
+                            <div onClick={() => {
+                                    if(result.status == 1) {
+                                        Offt(result.Table_code)
+                                        console.log("1")
+                                    }else {
+                                        Ont(result.Table_code)
+                                        console.log("2")
 
-                    <Link className="link text-w d-inline-block" to="/emp/table/detail">
-                        <div className="detailtable-but mt-2" type="button">รายละเอียด </div>
-                    </Link>
-                </div>
+                                    }
+                                }} className="link text-w" >
+                                    <div className="openclose-but " type="button">
+                                        เปิด/ปิด
+                                    </div>
+                                </div>
 
-            </div>
+
+
+                                <Link className="link text-w d-inline-block" to={`/emp/table/detail/${uid}/${result.Table_code}`}>
+                                    <div className="detailtable-but mt-2" type="button">รายละเอียด </div>
+                                </Link>
+                            </div>
+
+                        </div>
+
+                    )
+                })
+            }
+
         </div>
 
 

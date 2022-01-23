@@ -9,64 +9,102 @@ import { useHistory } from "react-router-dom";
 // import { MdAssignment } from "react-icons/md";
 // import { GoEye } from "react-icons/go";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
+import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 function Orderdetail() {
+  var navigate = useNavigate();
+  const { uid, oid } = useParams();
+  const [Menu, Setmenu] = useState([])
+  const [drinkMenu, SetDrinkmenu] = useState([])
+  const [vetMenu, SetVetmenu] = useState([])
+  const [fastMenu, SetFastmenu] = useState([])
+  const [round, SetRound] = useState(0)
 
+  
+  useEffect(() => {
+
+
+      Axios.post(`http://localhost:8888/geto`, {
+          oid: oid
+      }).then((resultt) => {
+
+          Setmenu(resultt.data)
+
+
+
+      })
+
+
+
+
+
+
+
+
+  }, []);
+  console.log(uid)
 
   return (
     <div>
-      <div className="bgc-g py-1 margin-bot mt-4">
-        <div className="row">
-          <div className="col-6 text-start px-5 mt-2">
-            <h3 className="font-50">#003</h3>
-          </div>
-          <div className="col-6 text-end px-5 text-g mt-2">
-            <h3 className="font-50">โต๊ะ01</h3>
-          </div>
-          <hr className="line-g" />
-        </div>
-        <div className="row font-25">
-          <div className="col-3 text-center">
-            หมวดหมู่
-          </div>
-          <div className="col-3 text-center">
-            จำนวน
-          </div>
-          <div className="col-3 text-center">
-            รายการอาหาร
-          </div>
-          <div className="col-3 text-center">
-            ราคา
-          </div>
-          <hr className="line-g" />
-        </div>
-        <div className="row font-25">
-          <div className="col-3 text-center">
-            เนื้อสัตว์
-          </div>
-          <div className="col-3 text-center">
-            2
-          </div>
-          <div className="col-3 text-center">
-            เนื้อหมู
-          </div>
-          <div className="col-3 text-center">
-            38
-          </div>
-          <hr className="line-g" />
-        </div>
-        <div >
-        <Link className="link "to="/admin/order/print">
-            <div className="printagain-but text-center text-w my-3" type="button">
-                ปริ้นอีกครั้ง 
-            </div>
-          </Link>
-        </div>
-        
-      </div>
-      
+            <div>
+                <table className="table mt-5 table-bordered text-center ">
+                    <thead>
+                        <tr>
+                            <td>ลำดับ</td>
+                            <td>รายการอาหาร</td>
+                            <td>จำนวน</td>
+                            <td>ราคารวม</td>
+                        </tr>
+                    </thead>
+                    {
 
-    </div>
+                        Menu.map((result, key) => {
+
+
+
+
+
+
+                            return (
+                                <tr key={key} >
+                                    <td className="p-2">{key + 1}</td>
+                                    <td className="p-2">{result.Menu_nameTH}</td>
+                                    <td className="p-2">{result.Detail_amount}</td>
+                                    <td className="p-2">{result.Detail_price}</td>
+
+
+                                </tr>
+
+                            )
+
+
+
+                        })
+                    }
+
+
+
+
+                </table>
+
+            </div>
+            <div className="d-block text-center">
+                <div onClick={() => {
+                    navigate(`/admin/order/${uid}`);
+                }} className="button-g text-center mx-5 d-inline-block ">
+                    ย้อนกลับ
+                </div>
+                <div onClick={() => { 
+                    navigate(`/admin/order/${uid}`);
+                }} className="button-g text-center  d-inline-block ">
+                    ปริ้นออร์เดอร์
+                </div>
+
+            </div>
+
+
+        </div>
 
 
 

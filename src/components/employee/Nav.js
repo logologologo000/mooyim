@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
+import logo from "../../Logo001.png";
 
 function Nav() {
   var navigate = useNavigate();
@@ -24,16 +25,16 @@ function Nav() {
           <div className="container">
             <div className="row">
               <div className="col-4 text-start">
-                1
+                <img src={logo} width={200} />
               </div>
               <div className="col-4">
                 <h3 className="text-w font-50">
-                  #พนักงาน
+                  
                 </h3>
               </div>
               <div className="col-4 text-end">
                 <h3 className="font-50">
-                  ออร์เดอร์
+                  
                 </h3>
               </div>
 
@@ -70,8 +71,10 @@ function Nav() {
                 </Link>
               </div>
             </div>
-            <div className="col-4 font-25 text-w " >
-              <div className="d-inline-block " type="button">
+            <div className="col-4 font-25 text-w text-end px-5" >
+              <div onClick={() => {
+                navigate(`/`);
+            }} className="d-inline-block " type="button">
             
             logout
               </div>

@@ -8,9 +8,13 @@ import { useHistory } from "react-router-dom";
 // import { FaUserGraduate } from "react-icons/fa";
 // import { MdAssignment } from "react-icons/md";
 // import { GoEye } from "react-icons/go";
-
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
+import logo from "../../Logo001.png";
 
 function Nav() {
+  var navigate = useNavigate();
+  const { uid } = useParams();
 
 
   return (
@@ -20,16 +24,17 @@ function Nav() {
           <div className="container">
             <div className="row">
               <div className="col-4 text-start">
-                1
+              <img src={logo} width={200} />
+                
               </div>
               <div className="col-4">
                 <h3 className="text-w font-50">
-                  #admin
+                  
                 </h3>
               </div>
               <div className="col-4 text-end">
                 <h3 className="font-50">
-                  ออร์เดอร์
+                 
                 </h3>
               </div>
 
@@ -40,7 +45,8 @@ function Nav() {
           <div className="row">
             <div className="col-8 text-start">
               <div className="d-inline-block text-w mx-3 font-25">
-                <Link className="link link:hover text-w" to="/admin/order">
+                <Link className="link link:hover text-w"
+                to={`/admin/order/${uid}`} >
                   ออร์เดอร์
                   </Link>
 
@@ -49,7 +55,7 @@ function Nav() {
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-                <Link className="link link:hover text-w" to="/admin/history">
+                <Link className="link link:hover text-w" to={`/admin/history/${uid}`} >
                   ประวัติ
                   </Link>
               </div>
@@ -57,7 +63,7 @@ function Nav() {
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-              <Link className="link link:hover text-w" to="/admin/manu">
+              <Link className="link link:hover text-w" to={`/admin/manu/${uid}`} >
                 รายการอาหาร
                 </Link>
               </div>
@@ -65,7 +71,7 @@ function Nav() {
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-              <Link className="link link:hover text-w" to="/admin/table">
+              <Link className="link link:hover text-w" to={`/admin/table/${uid}`} >
                 โต๊ะ
                 </Link>
               </div>
@@ -73,13 +79,15 @@ function Nav() {
                 |
               </div>
               <div className="d-inline-block text-w mx-3 font-25">
-              <Link className="link link:hover text-w" to="/admin/employee">
+              <Link className="link link:hover text-w" to={`/admin/employee/${uid}`} >
                 พนักงาน
                 </Link>
               </div>
             </div>
-            <div className="col-4 font-25 text-w " >
-              <div className="d-inline-block " type="button">
+            <div className="col-4 font-25 text-w text-end px-5" >
+              <div onClick={() => {
+                navigate(`/`);
+            }} className="d-inline-block " type="button">
             
             logout
               </div>

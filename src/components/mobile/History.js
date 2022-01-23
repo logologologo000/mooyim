@@ -110,7 +110,7 @@ function History() {
         </table>
 
       </div>
-      <div className="fixed-bottom mb-5">
+      <div className="">
         <div onClick={() => {
                 navigate(`/mobile/${tid}/beef`);
             }} className="button-g text-center mt-2 d-inline-block mx-3 ">
