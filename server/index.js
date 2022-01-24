@@ -58,6 +58,30 @@ app.get('/allmenu', (req, res) => {
 })
 //////////////////////////////////////////////////// Order //////////////////////////////////////////////////////////////////
 
+// DELETE ORDER finished by order_code
+app.get('/clearorder/:tid', (req , res) => {
+    var tid = req.params.tid
+    
+    connection.execute('DELETE FROM order_detail Where Table_code = ?' , [tid]).then(([result]) => {
+        
+    })
+
+    connection.execute('DELETE FROM order_head Where Table_code = (?)' , [tid]).then(([result]) => {
+        res.status(200).end()
+    })
+
+})
+
+
+//SET ORDER print
+app.get('/setorderp/:oid' , (req , res) => {
+    var oid = req.params.oid
+    connection.execute('UPDATE order_head SET print_status = 1 WHERE Head_code = (?)', [oid]).then((result) => {
+        res.end()
+    })
+})
+
+
 /// get order by table 
 app.get('/ordert/:tid', (req, res) => {
     var tid = req.params.tid
@@ -144,6 +168,149 @@ app.get('/ordertype/:oid', (req, res) => {
 
 
 //////////////////////////////////////////////////// Menu //////////////////////////////////////////////////////////////////
+
+
+
+// GET menu by id
+app.get('/getmenu/:id' , (req ,res ) => {
+    const id = req.params.id
+
+    connection.execute('SELECT * FROM menu_master WHERE Menu_code = (?)' , [id]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+
+// Delete Menu with Menu_code
+app.delete('/deletemenu/:mid', (req, res) => {
+    const mid = req.params.mid
+
+    try {
+        connection.execute('SELECT Menu_image FROM menu_master WHERE Menu_code = ?', [mid])
+        .then(([result]) => {
+            console.log(result[0].Menu_image)
+            fs.unlink(`${__dirname}/../public/uploads/${result[0].Mune_image}`, () => {console.log("Delete")})
+        })
+    } catch (err) {
+
+    }
+    
+
+    connection.execute('DELETE FROM menu_master WHERE Menu_code = ?', [mid])
+    .then(() => {
+        
+        res.status(200).send('Delete Success')
+
+        
+
+
+    })
+})
+
+
+//Edit Menu
+app.post('/editmenu', (req, res) => {
+
+
+    const name = req.body.name
+    const price = req.body.price
+    const type = req.body.type
+    const request_id = req.body.mid
+
+    
+        
+        
+        connection.execute('UPDATE menu_master SET Type_id = ? , Menu_price = ?, Menu_nameTH = ? WHERE Menu_code = ?',
+        [type, price ,name ,request_id]).then(() => {
+
+        res.send('Success')
+        return res.end
+     })
+    
+})
+
+//Edit menu with img
+app.post('/editmenuimg', (req, res) => {
+
+    if(req.files === null){
+        return res.status(400).json({ msg: 'no file upload'})
+    }
+    const file = req.files.file
+    const type = req.body.type
+    const name = req.body.name
+    const price = req.body.price
+    const request_id = req.body.mid
+    file.name = uuid.v4()+".jpg"
+
+    connection.execute('SELECT Menu_image FROM menu_master WHERE Menu_code = ?', [request_id])
+        .then(([result]) => {
+            console.log(result[0].Menu_image)
+            
+            fs.unlink(`${__dirname}/../public/uploads/${result[0].Menu_image}`, () => {console.log("Delete")})
+        })
+
+    
+
+    file.mv(`${__dirname}/../public/uploads/${file.name}`, err => {
+        if(err) {
+            console.error(err)
+            return res.status(500).send(err)
+        }
+        res.json({ fileName: file.name, filePath: `/uploads/${file.name}`})
+    })
+    
+    connection.execute('UPDATE menu_master SET Menu_image = ?, Type_id = ?, Menu_nameTH = ?, Menu_price = ? WHERE Menu_code = ?',
+        [file.name, type, name, price ,request_id]).catch(err => {
+         console.error(err)
+         
+     })
+    
+})
+
+
+//Create Menu
+app.post('/createmenu', (req, res) => {
+    
+
+    if(req.files === null){
+        console.log('no file upload')
+        return res.status(400).json({ msg: 'no file upload'})
+    }
+    const name = req.body.name
+    const price = req.body.price
+    const type = req.body.type
+    const file = req.files.file
+    console.log(name)
+    console.log(price)
+    console.log(type)
+    console.log(file)
+    
+    
+    file.name = uuid.v4()+".jpg"
+    
+
+    file.mv(`${__dirname}/../public/uploads/${file.name}`, err => {
+        if(err) {
+            console.error(err)
+            return res.status(500).send(err)
+        }
+        res.json({ fileName: file.name, filePath: `/uploads/${file.name}`})
+    })
+    
+    var to = new Date()
+    var x = to.getHours() + 7
+    console.log(x)
+    to.setHours(x)
+    console.log(' befoe insert')
+    
+    connection.execute('INSERT INTO menu_master (Menu_nameTH , Menu_price ,Type_id , Menu_image  ) VALUES (?, ?, ? , ?)', [name ,price , type , file.name]).then((result) => {
+        console.log('insert')
+    })
+
+    
+    
+})
+
 
 ///////////// on menu
 app.get('/onmenu/:id', (req , res) => {
@@ -349,6 +516,7 @@ app.get('/deltable/:id' , (req , res) => {
         res.status(200).send(result).end()
     })
 })
+
 
 
 

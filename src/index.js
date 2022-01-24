@@ -33,6 +33,7 @@ import AddtableAdmin from './components/admin/Addtable'
 import ManufixAdmin from './components/admin/Manufix'
 import OrderAdmin from './components/admin/Order'
 import PrintAdmin from './components/admin/Print'
+import PrintfAdmin from './components/admin/Printf'
 import OrderdetailAdmin from './components/admin/Orderdetail'
 import HistoryAdmin from './components/admin/History'
 import TabledetailAdmin from './components/admin/Tabledetail'
@@ -76,9 +77,10 @@ export default function Apps() {
         <Route path="/admin/employee/employeedetail/:uid/:uidd" element={<div><NavAdmin /><EmployeedetailAdmin /></div>} />
         <Route path="/admin/employee/employeedetail/employeefix/:uid/:uidd" element={<div><NavAdmin /><EmployeefixAdmin /></div>} />
         <Route path="/admin/table/addtable/:uid" element={<div><NavAdmin /><AddtableAdmin /></div>} />
-        <Route path="/admin/manu/manufix" element={<div><NavAdmin /><ManufixAdmin /></div>} />
+        <Route path="/admin/manu/manufix/:uid/:mid" element={<div><NavAdmin /><ManufixAdmin /></div>} />
         
-        <Route path="/admin/order/print" element={<div><NavAdmin /><PrintAdmin /></div>} />
+        <Route path="/admin/order/print/:uid/:oid" element={<div><PrintAdmin /></div>} />
+        <Route path="/admin/table/detail/printf/:uid/:tid" element={<div><PrintAdmin /></div>} />
         <Route path="/admin/order/detail/:uid/:oid" element={<div><NavAdmin /><OrderdetailAdmin /></div>} />
         <Route path="/admin/table/detail/:uid/:tid" element={<div><NavAdmin /><TabledetailAdmin /></div>} />
         

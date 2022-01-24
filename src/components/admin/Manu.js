@@ -71,6 +71,8 @@ function Manu() {
                         <div className="row bgc-g py-3 mb-2 zzzborder" style={{ height: 200 }}>
                             <div className="col-2 text-center">
                                 <div className="photo-size mt-2">
+                                    <img style={{ width: 150, height: 150 }} src={`/uploads/${result.Menu_image}`} />
+
                                 </div>
                             </div>
                             <div className="col-2 text-center pt-5 mt-4">
@@ -98,7 +100,7 @@ function Manu() {
                                     </div>
                                 </div>
 
-                                <Link className="link text-w" to="/admin/manu/manufix">
+                                <Link className="link text-w" to={`/admin/manu/manufix/${uid}/${result.Menu_code}`}>
                                     <div className="fix-manu-but d-inline-block  my-2" type="button">
                                         แก้ไข
                                     </div>

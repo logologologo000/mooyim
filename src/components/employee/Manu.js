@@ -9,8 +9,10 @@ import { useHistory } from "react-router-dom";
 // import { MdAssignment } from "react-icons/md";
 // import { GoEye } from "react-icons/go";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
+import { useParams } from 'react-router-dom'
 
 function Manu() {
+    const { uid } = useParams();
 
     const [menu, Setmenu] = useState([])
     useEffect(() => {
@@ -21,13 +23,13 @@ function Manu() {
 
     const Onm = (e) => {
         Axios.get(`http://localhost:8888/onmenu/${e}`).then((result) => {
-            
+
         })
     }
 
     const Offm = (e) => {
         Axios.get(`http://localhost:8888/offmenu/${e}`).then((result) => {
-            
+
         })
     }
 
@@ -61,6 +63,8 @@ function Manu() {
                         <div className="row bgc-g py-3 mb-2 zzzborder" style={{ height: 200 }}>
                             <div className="col-3 text-center">
                                 <div className="photo-size mt-2">
+                                    <img style={{ width: 150, height: 150 }} src={`/uploads/${result.Menu_image}`} />
+
                                 </div>
                             </div>
                             <div className="col-2 text-center pt-5 mt-4">
@@ -70,16 +74,16 @@ function Manu() {
                                 <h3>{result.Menu_nameTH}</h3>
                             </div>
                             <div className="col-2 text-center pt-5 mt-32">
-                            {result.status == 1 ? <h5 style={{color : "green"}}>เปิด</h5> : <h5 style={{color : "red"}}>ปิด</h5>}
+                                {result.status == 1 ? <h5 style={{ color: "green" }}>เปิด</h5> : <h5 style={{ color: "red" }}>ปิด</h5>}
 
-                                
+
                             </div>
                             <div className="col-3 text-center text-w pt-5">
 
                                 <div onClick={() => {
-                                    if(result.status == 1) {
+                                    if (result.status == 1) {
                                         Offm(result.Menu_code)
-                                    }else {
+                                    } else {
                                         Onm(result.Menu_code)
                                     }
                                 }} className="link text-w" >
@@ -88,11 +92,7 @@ function Manu() {
                                     </div>
                                 </div>
 
-                                <Link className="link text-w" to="/admin/manu/manufix">
-                        <div className="fix-manu-but d-inline-block  my-2" type="button">
-                            แก้ไข 
-                            </div>
-                    </Link>
+                                
                             </div>
 
                         </div>

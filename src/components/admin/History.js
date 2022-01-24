@@ -19,7 +19,7 @@ function History() {
     Axios.get('http://localhost:8888/orderallp').then((result) => {
       Setmenu(result.data)
     })
-  }, []);
+  }, [menu]);
 
   return (
     <div>
@@ -57,7 +57,7 @@ function History() {
                     <div className="detail-but" type="button">ดูรายละเอียด </div>
                   </Link>
 
-                  <Link className="link text-w" to="/admin/order/print">
+                  <Link className="link text-w" target="_blank" to={`/admin/order/print/${uid}/${result.Head_code}`}>
                     <div className="print-but mt-2" type="button">ปริ้นอีกครัง </div>
                   </Link>
 

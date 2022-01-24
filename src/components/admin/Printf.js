@@ -10,7 +10,7 @@ import { Link, Route, Switch } from "react-router-dom";
 // import { GoEye } from "react-icons/go";
 // import { HiOutlineSearchCircle } from "react-icons/hi";
 
-function Print() {
+function Printf() {
     //let history = useHistory();
 
 useEffect(() => {
@@ -29,4 +29,4 @@ useEffect(() => {
   );
 }
 
-export default Print;
+export default Printf;

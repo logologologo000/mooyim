@@ -235,8 +235,8 @@ function Selectbeef() {
 
                     <div className="row bgc-g mt-3">
                       <div className="col-5">
-                        <div className="py-5 text-center">
-                          รูป
+                        <div className="py-2 text-center">
+                        <img style={{width : 100 , height : 100}} src={`/uploads/${result.Menu_image}`} />
                         </div>
                       </div>
                       <div className="col-5 pt-3">
@@ -299,8 +299,8 @@ function Selectbeef() {
                   <div key={key}>
                     <div className="row bgc-g mt-3">
                       <div className="col-5">
-                        <div className="py-5 text-center">
-                          รูป
+                        <div className="py-2 text-center">
+                        <img style={{width : 100 , height : 100}} src={`/uploads/${result.Menu_image}`} />
                         </div>
                       </div>
                       <div className="col-5 pt-3">
@@ -361,8 +361,8 @@ function Selectbeef() {
                   <div key={key}>
                     <div className="row bgc-g mt-3">
                       <div className="col-5">
-                        <div className="py-5 text-center">
-                          รูป
+                        <div className="py-2 text-center">
+                        <img style={{width : 100 , height : 100}} src={`/uploads/${result.Menu_image}`} />
                         </div>
                       </div>
                       <div className="col-5 pt-3">
@@ -423,8 +423,8 @@ function Selectbeef() {
                   <div key={key}>
                     <div className="row bgc-g mt-3">
                       <div className="col-5">
-                        <div className="py-5 text-center">
-                          รูป
+                        <div className="py-2 text-center">
+                        <img style={{width : 100 , height : 100}} src={`/uploads/${result.Menu_image}`} />
                         </div>
                       </div>
                       <div className="col-5 pt-3">

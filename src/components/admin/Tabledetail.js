@@ -15,67 +15,98 @@ import { useNavigate } from 'react-router-dom';
 
 function Tabledetail() {
 
-    var navigate = useNavigate();
+  var navigate = useNavigate();
 
-    const { uid, tid } = useParams();
-    const [Menu, Setmenu] = useState([])
-    const [drinkMenu, SetDrinkmenu] = useState([])
-    const [vetMenu, SetVetmenu] = useState([])
-    const [fastMenu, SetFastmenu] = useState([])
-    const [price, SetPrice] = useState(0)
-    
-    useEffect(() => {
-  
-      Axios.get(`http://localhost:8888/ordert/${tid}`).then((result) => {
+  const { uid, tid } = useParams();
+  const [Menu, Setmenu] = useState([])
+  const [drinkMenu, SetDrinkmenu] = useState([])
+  const [vetMenu, SetVetmenu] = useState([])
+  const [fastMenu, SetFastmenu] = useState([])
+  const [price, SetPrice] = useState(0)
+
+  useEffect(() => {
+
+    Axios.get(`http://localhost:8888/ordert/${tid}`).then((result) => {
       Setmenu(result.data)
-      
-  
-  
-  
+
+
+
+
+    })
+
+
+
+    Axios.get(`http://localhost:8888/getorderbt/${tid}`).then((resultt) => {
+
+      var x = 0
+
+      resultt.data.map((result, key) => {
+
+        x = x + result.Detail_price
+
+
+
+
       })
-  
-      
-  
+      SetPrice(x)
+    })
+
+
+
+
+  }, []);
+
+  const Fin = () => {
+    Axios.get(`http://localhost:8888/clearorder/${tid}`).then((result) => {
+      Axios.get(`http://localhost:8888/ordert/${tid}`).then((result) => {
+        Setmenu(result.data)
+
+
+
+
+      })
+
+
+
       Axios.get(`http://localhost:8888/getorderbt/${tid}`).then((resultt) => {
-        
+
         var x = 0
-        
+
         resultt.data.map((result, key) => {
-          
+
           x = x + result.Detail_price
-  
-  
-  
-  
+
+
+
+
         })
-          SetPrice(x)
+        SetPrice(x)
       })
-  
-      
-  
-  
-    }, []);
+    })
+  }
 
-    return (
-        <div className=" text-center">
+  return (
+    <div className=" text-center">
 
 
-      
+
       {
         price == 0 ? <Link className="link text-w" to={`/admin/table/fixtable/${uid}/${tid}`}>
-        <div className="fix-manu-but d-inline-block  my-2" type="button">
+          <div className="fix-manu-but d-inline-block  my-2" type="button">
             แก้ไข
-        </div>
-    </Link>  : <h3 className="py-3">ราคารวมทั้งหมด {price} บาท</h3>
+          </div>
+        </Link> : <h3 className="py-3">ราคารวมทั้งหมด {price} บาท</h3>
       }
       <div className=" mb-5">
         <div type="button" onClick={() => {
-          navigate(`/mobile/${tid}/beef`);
+          window.open(`http://localhost:3000/admin/table/detail/printf/${uid}/${tid}`);
+          // navigate(`/mobile/${tid}/beef`);
         }} className="button-g text-center mt-2 d-inline-block mx-3 px-5 ">
           ปริ้นใบเสร็จ
         </div>
         <div type="button" onClick={() => {
-          navigate(`/mobile/${tid}/beef`);
+          // navigate(`/admin/table/detail/${uid}/${tid}`);
+          Fin()
         }} className="button-gr text-center mt-2 d-inline-block mx-3 px-5 ">
           ชำระเงิน
         </div>
@@ -134,7 +165,7 @@ function Tabledetail() {
 
 
 
-    );
+  );
 }
 
 export default Tabledetail;
