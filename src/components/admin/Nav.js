@@ -34,7 +34,7 @@ function Nav() {
               </div>
               <div className="col-4 text-end">
                 <h3 className="font-50">
-                 
+                  <h1 className="mt-4">แอดมิน</h1>
                 </h3>
               </div>
 
@@ -89,7 +89,8 @@ function Nav() {
                 navigate(`/`);
             }} className="d-inline-block " type="button">
             
-            logout
+            ออกจากระบบ
+
               </div>
             </div>
           </div>

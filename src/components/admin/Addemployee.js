@@ -80,9 +80,19 @@ function Addemployee() {
                     สถานะ:
                 </div>
                 <div className="col-3 d-inline-block font-25 mt-2">
-                    <input onChange={(e) => {
-                        SetUstatus(e.target.value)
-                    }} type="text"  />
+                
+                    <select
+                            onChange={(e) => {
+                                SetUstatus(e.target.value)
+                            }}
+                            className="" aria-label="Default select example">
+
+                            <option defaultValue >select section</option>
+                            <option value="01">พนักงาน</option>
+                            <option value="02">แอดมิน</option>
+                            
+                            
+                        </select>
                 </div>
                 <div className="col-6">
                 </div>

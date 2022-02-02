@@ -89,13 +89,14 @@ function Orderdetail() {
 
             </div>
             <div className="d-block text-center">
-                <div onClick={() => {
+                <div type="button" onClick={() => {
                     navigate(`/emp/order/${uid}`);
                 }} className="button-g text-center mx-5 d-inline-block ">
                     ย้อนกลับ
                 </div>
-                <div onClick={() => {
-                    navigate(`/emp/order/${uid}`);
+                <div type="button" onClick={() => {
+                    window.open(`/admin/order/print/${uid}/${oid}`);
+                    // navigate(`/emp/order/${uid}`);
                 }} className="button-g text-center  d-inline-block ">
                     ปริ้นออร์เดอร์
                 </div>

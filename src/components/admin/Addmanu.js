@@ -94,9 +94,22 @@ function Addmanu() {
                         รหัสหมวดหมู่:
                     </div>
                     <div className="col-3 d-inline-block font-25 mt-2">
-                        <input onChange={(e) => {
+                        {/* <input onChange={(e) => {
                             setType(e.target.value)
-                        }} type="text" />
+                        }} type="text" /> */}
+                        <select
+                            onChange={(e) => {
+                                setType(e.target.value)
+                            }}
+                            className="" aria-label="Default select example">
+
+                            <option defaultValue >select section</option>
+                            <option value="001">เนื้อ</option>
+                            <option value="002">ของทานเล่น</option>
+                            <option value="003">ผักสด</option>
+                            <option value="004">เครื่องดื่ม</option>
+                            
+                        </select>
                     </div>
                     <div className="col-7">
                     </div>
@@ -128,7 +141,7 @@ function Addmanu() {
                 </div>
                 <div>
                     <div className="link text-w" onClick={onSubmit}>
-                        <div  className="confirm-but text-center my-5" type="button">ยืนยัน </div>
+                        <div className="confirm-but text-center my-5" type="button">ยืนยัน </div>
                     </div>
                 </div>
             </div>

@@ -83,6 +83,10 @@ function Tabledetail() {
         SetPrice(x)
       })
     })
+
+    Axios.get(`http://localhost:8888/offtable/${tid}`).then((result) => {
+            
+        })
   }
 
   return (
@@ -106,7 +110,10 @@ function Tabledetail() {
         </div>
         <div type="button" onClick={() => {
           // navigate(`/admin/table/detail/${uid}/${tid}`);
-          Fin()
+          if(window.confirm("ยืนยันการชำระเงินแล้ว")){
+            Fin()
+
+          }
         }} className="button-gr text-center mt-2 d-inline-block mx-3 px-5 ">
           ชำระเงิน
         </div>

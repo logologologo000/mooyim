@@ -112,7 +112,7 @@ app.post('/geto/:tid', (req, res) => {
     var oid = req.body.oid
     console.log(tid)
     console.log(oid)
-    connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Table_code = (?) and Head_code = (?)', [tid, oid]).then(([result]) => {
+    connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Table_code = (?) and Head_code = (?) order by mu.Type_id', [tid, oid]).then(([result]) => {
         res.status(200).send(result).end()
     })
 })
@@ -372,6 +372,13 @@ app.post('/login', (req, res) => {
 //get all table open
 app.get('/alltable', (req, res) => {
     connection.execute('SELECT * from table_main').then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+//get all table q
+app.get('/alltableq', (req, res) => {
+    connection.execute('SELECT * from table_main order by   status desc, Table_code ').then(([result]) => {
         res.status(200).send(result).end()
     })
 })

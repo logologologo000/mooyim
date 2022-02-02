@@ -16,7 +16,7 @@ function Table() {
 
     const [menu, Setmenu] = useState([])
     useEffect(() => {
-        Axios.get('http://localhost:8888/alltable').then((result) => {
+        Axios.get('http://localhost:8888/alltableq').then((result) => {
             Setmenu(result.data)
         })
     }, [menu]);
