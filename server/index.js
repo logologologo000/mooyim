@@ -106,13 +106,24 @@ app.get('/orderallp', (req, res) => {
     })
 })
 
-/// get order by table 
+/// get order by table and oid
 app.post('/geto/:tid', (req, res) => {
     var tid = req.params.tid
     var oid = req.body.oid
     console.log(tid)
     console.log(oid)
     connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Table_code = (?) and Head_code = (?) order by mu.Type_id', [tid, oid]).then(([result]) => {
+        res.status(200).send(result).end()
+    })
+})
+
+/// get order all by table
+app.post('/getoa/:tid', (req, res) => {
+    var tid = req.params.tid
+    
+    console.log(tid)
+    
+    connection.execute('SELECT dt.* , mu.Type_id , mu.Menu_nameTH , sum(dt.Detail_price) AS sumdtp , sum(dt.Detail_amount) AS sumdta FROM order_detail dt LEFT JOIN menu_master mu ON (mu.Menu_code = dt.Menu_code) WHERE Table_code = (?) GROUP BY dt.Menu_code order by mu.Type_id', [tid]).then(([result]) => {
         res.status(200).send(result).end()
     })
 })
@@ -156,6 +167,8 @@ app.get('/insorder/:id', (req, res) => {
         })
     })
 })
+
+
 
 /////get order by detail code and as type
 app.get('/ordertype/:oid', (req, res) => {

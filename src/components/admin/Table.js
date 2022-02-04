@@ -72,9 +72,13 @@ function Table() {
 
                             <div onClick={() => {
                                     if(result.status == 1) {
-                                        Offt(result.Table_code)
+                                        if(window.confirm('ยืนยันการปิดโต๊ะ ')){
+                                            Offt(result.Table_code)
                                         console.log("1")
+                                        }
+                                        
                                     }else {
+                                        
                                         Ont(result.Table_code)
                                         console.log("2")
 

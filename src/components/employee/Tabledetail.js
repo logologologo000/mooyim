@@ -63,7 +63,8 @@ function Tabledetail() {
       <h3 className="py-3">ราคารวมทั้งหมด {price} บาท</h3>
       <div className=" mb-5">
         <div type="button" onClick={() => {
-          navigate(`/mobile/${tid}/beef`);
+          window.open(`http://localhost:3000/admin/table/detail/printf/${uid}/${tid}`);
+          // navigate(`/mobile/${tid}/beef`);
         }} className="button-g text-center mt-2 d-inline-block mx-3 px-5 ">
           ปริ้นใบเสร็จ
         </div>

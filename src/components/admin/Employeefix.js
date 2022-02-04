@@ -85,9 +85,21 @@ function Employeefix() {
                             สถานะ:
                         </div>
                         <div className="col-3 d-inline-block font-25 mt-2">
-                            <input onChange={(e) => {
+                            {/* <input onChange={(e) => {
                                 SetUstatus(e.target.value)
-                            }} type="text" value={ustatus} />
+                            }} type="text" value={ustatus} /> */}
+                            <select
+                            onChange={(e) => {
+                                SetUstatus(e.target.value)
+                            }}
+                            className="" aria-label="Default select example">
+
+                            <option defaultValue value={ustatus} >select section</option>
+                            <option value="02">พนักงาน</option>
+                            <option value="01">แอดมิน</option>
+                            
+                            
+                        </select>
                         </div>
                         <div className="col-6">
                         </div>

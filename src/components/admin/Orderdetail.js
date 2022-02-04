@@ -39,6 +39,11 @@ function Orderdetail() {
   }, []);
   console.log(uid)
 
+  const SetPrint = (oid) => {
+    Axios.get(`http://localhost:8888/setorderp/${oid}`).then((result) => {
+
+    })
+  }
   return (
     <div>
             <div>
@@ -91,6 +96,7 @@ function Orderdetail() {
                     ย้อนกลับ
                 </div>
                 <div type="button" onClick={() => { 
+                    SetPrint(oid)
                     window.open(`/admin/order/print/${uid}/${oid}`);
                     // navigate(`/admin/order/${uid}`);
                 }} className="button-g text-center  d-inline-block ">

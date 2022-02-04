@@ -68,7 +68,7 @@ function Employeedetail() {
                         สถานะ:
                     </div>
                     <div className="col-3 d-inline-block font-25 mt-2">
-                    {emp[0] != null ? (emp[0].status_id == '01' ? <h3 >แอดมิน</h3> : <h3 >พนักงาน</h3>) : <div></div> }
+                    {emp[0] != null ? (emp[0].Status_id == '01' ? <h3 >แอดมิน</h3> : <h3 >พนักงาน</h3>) : <div></div> }
                         
                     </div>
                     <div className="col-7">

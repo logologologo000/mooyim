@@ -90,7 +90,7 @@ function Manufix() {
                         'Content-Type': 'multipart/form-data'
                     }
                 })
-                // history.push("/");
+                navigate(`/admin/manu/${uid}`);
             } catch (err) {
                 if (err) {
                     console.log(err)
@@ -110,7 +110,7 @@ function Manufix() {
            
         })
         const timer = setTimeout(() => {
-            // history.push("/");
+            navigate(`/admin/manu/${uid}`);
         }, 1000);
         //window.alert("return to main")
         
@@ -142,10 +142,28 @@ function Manufix() {
                     <div className="col-2 font-35 d-inline-block mx-5 text-end">
                         รหัสหมวดหมู่:
                     </div>
-                    <div className="col-3 d-inline-block font-25 mt-2">
+                    {/* <div className="col-3 d-inline-block font-25 mt-2">
                         <input type="text" onChange={(e) => {
                             setType(e.target.value)
                         }} value={type} />
+                    </div> */}
+                    <div className="col-3 d-inline-block font-25 mt-2">
+                        {/* <input onChange={(e) => {
+                            setType(e.target.value)
+                        }} type="text" /> */}
+                        <select
+                            onChange={(e) => {
+                                setType(e.target.value)
+                            }}
+                            className="" aria-label="Default select example">
+
+                            <option defaultValue value={type} >select section</option>
+                            <option value="001">เนื้อ</option>
+                            <option value="002">ของทานเล่น</option>
+                            <option value="003">ผักสด</option>
+                            <option value="004">เครื่องดื่ม</option>
+                            
+                        </select>
                     </div>
                     <div className="col-7">
                     </div>

@@ -12,6 +12,7 @@ import { Link, Route, Switch } from "react-router-dom";
 import logo from "../../Logo002.png";
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+
 function Print() {
   //let history = useHistory();
   var navigate = useNavigate();
@@ -25,6 +26,7 @@ function Print() {
 
   var x = 0
   var ti = ""
+  
   useEffect(() => {
     // alert("กำลังค้นหาอุปกรณ์")
     // alert("ไม่พบอุปกรณ์เครื่องปริ้น")

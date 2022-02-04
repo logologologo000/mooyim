@@ -12,9 +12,11 @@ import { useHistory } from "react-router-dom";
 
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+// import { useDialog } from 'react-dialog'
+
 
 function Tabledetail() {
-
+  
   var navigate = useNavigate();
 
   const { uid, tid } = useParams();
@@ -87,6 +89,8 @@ function Tabledetail() {
     Axios.get(`http://localhost:8888/offtable/${tid}`).then((result) => {
             
         })
+
+        navigate(`/admin/table/${uid}`);
   }
 
   return (
@@ -110,7 +114,7 @@ function Tabledetail() {
         </div>
         <div type="button" onClick={() => {
           // navigate(`/admin/table/detail/${uid}/${tid}`);
-          if(window.confirm("ยืนยันการชำระเงินแล้ว")){
+          if(window.confirm("ยืนยันการชำระเงิน")){
             Fin()
 
           }

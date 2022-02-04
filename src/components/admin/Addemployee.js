@@ -88,8 +88,8 @@ function Addemployee() {
                             className="" aria-label="Default select example">
 
                             <option defaultValue >select section</option>
-                            <option value="01">พนักงาน</option>
-                            <option value="02">แอดมิน</option>
+                            <option value="02">พนักงาน</option>
+                            <option value="01">แอดมิน</option>
                             
                             
                         </select>

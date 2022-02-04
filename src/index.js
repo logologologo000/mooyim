@@ -80,7 +80,7 @@ export default function Apps() {
         <Route path="/admin/manu/manufix/:uid/:mid" element={<div><NavAdmin /><ManufixAdmin /></div>} />
         
         <Route path="/admin/order/print/:uid/:oid" element={<div><PrintAdmin /></div>} />
-        <Route path="/admin/table/detail/printf/:uid/:tid" element={<div><PrintAdmin /></div>} />
+        <Route path="/admin/table/detail/printf/:uid/:tid" element={<div><PrintfAdmin /></div>} />
         <Route path="/admin/order/detail/:uid/:oid" element={<div><NavAdmin /><OrderdetailAdmin /></div>} />
         <Route path="/admin/table/detail/:uid/:tid" element={<div><NavAdmin /><TabledetailAdmin /></div>} />
         
